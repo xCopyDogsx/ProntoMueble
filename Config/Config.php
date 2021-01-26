@@ -11,5 +11,6 @@
  	const SPM = ".";
  	//Simbolo de la moneda 
  	const SMONEY = "$COP";
-
+ 	//Zona Horaria del sistema
+ 	date_default_timezone_set('America/Bogota');
  ?>
