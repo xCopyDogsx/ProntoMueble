@@ -267,7 +267,7 @@
       </div>
       <div class="col-md-6 align-self-center">
         <h1>404</h1>
-        <h2>Has entrado a donde no era.</h2>
+        <h2>Has entrado donde no era.</h2>
         <p>La página que estas buscando no existe.
           Si crees que es un error contacta con el soporte técnico.
           Para salir da click en el botón.
