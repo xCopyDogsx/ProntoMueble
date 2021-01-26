@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css"> 
 <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css'>
-<link rel="stylesheet" type="text/css" href="Assets/css/error.css">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>/Assets/css/error.css">
 </head>
 <body>
 <main>
@@ -272,7 +272,7 @@
           Si crees que es un error contacta con el soporte técnico.
           Para salir da click en el botón.
         </p>
-        <a class="btn btn-outline-success" href="home" role="button">Ir al inicio</a>
+        <a class="btn btn-outline-success" href="<?php echo base_url();?>/home" role="button">Ir al inicio</a>
       </div>
     </div>
   </div>
@@ -282,7 +282,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/3.1.1/gsap.min.js'></script>
-<script type="text/javascript" src="Assets/js/error.js"></script>
+<script type="text/javascript" src="<?php echo base_url();?>/Assets/js/error.js"></script>
 
 </body>
 </html>
