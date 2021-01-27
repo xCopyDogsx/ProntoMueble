@@ -16,6 +16,7 @@
         	$resInsert = $insert->execute($this->arrVAlues);
         	if($resInsert)
 	        {
+	        	
 	        	$lastInsert = $this->conexion->lastInsertId();
 	        }else{
 	        	$lastInsert = 0;
