@@ -8,7 +8,34 @@
     {
         return BASE_URL."/Assets";
     }
-    
+    function headerAdmin($data=""){
+        $view_header = "Views/Template/header_admin.php";
+        if(file_exists($view_header)){
+            require_once($view_header); 
+        }else{
+            echo "Error al cargar el recurso";
+        }
+       
+    }
+    function footerAdmin($data=""){
+
+        $view_footer = "Views/Template/footer_admin.php";
+         if(file_exists($view_footer)){
+             require_once($view_footer);
+        }else{
+            echo "Error al cargar el recurso";
+        }
+
+    }
+    function navAdmin($data=""){
+         $view_nav = "Views/Template/nav_admin.php";
+         if(file_exists($view_nav)){
+             require_once($view_nav);
+        }else{
+            echo "Error al cargar el recurso";
+        }
+    }
+
 	//Muestra información formateada
 	function dep($data)
     {
