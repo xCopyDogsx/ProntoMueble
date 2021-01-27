@@ -2,7 +2,6 @@
 	class Home extends  Controllers{
 		public function __construct() {
 			parent::__construct();
-
 		}
 		public function Home(){
 			$data['page_id']=1;
