@@ -12,7 +12,21 @@
 			$this->views->getView($this,"roles",$data);		
 		}
 		public function getRoles(){
-			
+			$arrData  =  $this->model->selectRoles();
+			for($i=0;$i<count($arrData);$i++){
+				if($arrData[$i]['status']==1){
+					$arrData[$i]['status']='<span class="badge badge-pill badge-success">Activo</span>';
+				}else{
+					$arrData[$i]['status']='<span class="badge badge-pill badge-danger">Inactivo</span>';
+				}
+				$arrData[$i]['options'] = '<div class="text-center">
+				<button class="btn btn-secondary btn-sm btnPermisosRol" rl="'.$arrData[$i]['idrol'].'" title="Permisos"><i class="fas fa-key"></i></button>
+				<button class="btn btn-primary btn-sm btnEditRol" rl="'.$arrData[$i]['idrol'].'" title="Editar"><i class="fas fa-pencil-alt"></i></button>
+				<button class="btn btn-danger btn-sm btnDelRol" rl="'.$arrData[$i]['idrol'].'" title="Eliminar"><i class="far fa-trash-alt"></i></button>
+				</div>';
+			}
+			echo json_encode($arrData,JSON_UNESCAPED_UNICODE);
+			die();
 		}
 	}
  ?>
