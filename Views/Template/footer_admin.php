@@ -14,6 +14,7 @@
     <script src="<?php echo media(); ?>/js/functions_admin.js"></script>
     <script src="<?php echo media(); ?>/js/functions_roles.js"></script>
     <script src="<?php echo media(); ?>/js/fontawesome.js"></script>
+    <script type="text/javascript" src="<?php echo media(); ?>/js/plugins/sweetalert.min.js"></script>
     <!-- Google analytics script-->
     <script type="text/javascript">
       if(document.location.hostname == 'pratikborsadiya.in') {
