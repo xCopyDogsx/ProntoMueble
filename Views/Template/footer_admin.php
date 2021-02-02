@@ -6,7 +6,11 @@
     <!-- The javascript plugin to display page loading on top-->
     <script src="<?php echo media(); ?>/js/plugins/pace.min.js"></script>
     <!-- Page specific javascripts-->
+    <script type="text/javascript" src="<?php echo media(); ?>/js/plugins/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="<?php echo media(); ?>/js/plugins/dataTables.bootstrap.min.js"></script>
     <script src="<?php echo media(); ?>/js/functions_admin.js"></script>
+    <script src="<?php echo media(); ?>/js/functions_roles.js"></script>
+    <script src="<?php echo media(); ?>/js/fontawesome.js"></script>
     <!-- Google analytics script-->
     <script type="text/javascript">
       if(document.location.hostname == 'pratikborsadiya.in') {
