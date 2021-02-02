@@ -76,9 +76,9 @@
 			$request = $this->select_all($sql);
 			if(empty($request))
 			{
-				$sql = "UPDATE rol SET status = ? WHERE idrol = $this->intIdrol ";
+				$sql = "DELETE from rol WHERE idrol = $this->intIdrol ";
 				$arrData = array(0);
-				$request = $this->update($sql,$arrData);
+				$request = $this->delete($sql,$arrData);
 				if($request)
 				{
 					$request = 'ok';	

@@ -115,11 +115,11 @@ function fntEditRol(){
                         document.querySelector("#txtNombre").value = objData.data.nombrerol;
                         document.querySelector("#txtDescripcion").value = objData.data.descripcion;
 
-                        if(objData.data.status == 1)
+                       if(objData.data.status == 1)
                         {
-                            var optionSelect = '<option value="1" selected class="notBlock">Activo</option>';
+                            var optionSelect = '';
                         }else{
-                            var optionSelect = '<option value="2" selected class="notBlock">Inactivo</option>';
+                            var optionSelect = '';
                         }
                         var htmlSelect = `${optionSelect}
                                           <option value="1">Activo</option>
