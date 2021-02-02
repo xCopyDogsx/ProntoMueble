@@ -6,6 +6,7 @@
     <!-- The javascript plugin to display page loading on top-->
     <script src="<?php echo media(); ?>/js/plugins/pace.min.js"></script>
     <!-- Page specific javascripts-->
+    <script src="<?php echo media(); ?>/js/functions_admin.js"></script>
     <!-- Google analytics script-->
     <script type="text/javascript">
       if(document.location.hostname == 'pratikborsadiya.in') {
