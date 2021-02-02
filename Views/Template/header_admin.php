@@ -5,9 +5,11 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#DF8D7B">
+    <link rel="shortcut icon" href="<?php echo media(); ?>/images/icono.png">
     <!-- Main CSS-->
     <link rel="stylesheet" type="text/css" href="<?php echo media(); ?>/css/main.css">
-    <link rel="shortcut icon" href="<?php echo media(); ?>/images/icono.png">
+    <link rel="stylesheet" type="text/css" href="<?php echo media(); ?>/css/bootstrap-select.min.css"> 
   </head>
     <body class="app sidebar-mini">
     <!-- Navbar-->

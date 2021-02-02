@@ -34,7 +34,7 @@
 			$this->strDescripcion = $descripcion;
 			$this->intStatus = $status;
 
-			$sql = "SELECT * FROM rol WHERE nombrerol = '{$this->strRol}' ";
+			$sql = "SELECT nombrerol FROM rol WHERE nombrerol = '{$this->strRol}' ";
 			$request = $this->select_all($sql);
 
 			if(empty($request))

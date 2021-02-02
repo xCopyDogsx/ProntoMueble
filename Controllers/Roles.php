@@ -72,7 +72,7 @@
 				$option = 2;
 			}
 
-			if($request_rol > 0 )
+			if($request_rol > 0 && strcmp($request_rol,"exist") != 0)
 			{
 				if($option == 1)
 				{
@@ -80,7 +80,7 @@
 				}else{
 					$arrResponse = array('status' => true, 'msg' => 'Datos Actualizados correctamente.');
 				}
-			}else if($request_rol == 'exist'){
+			}else if(strcmp($request_rol,"exist") === 0){
 				
 				$arrResponse = array('status' => false, 'msg' => '¡Atención! El Rol ya existe.');
 			}else{
