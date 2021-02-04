@@ -147,10 +147,10 @@ function fntDelRol(){
                 text: "¿Realmente quiere eliminar el Rol?",
                 type: "warning",
                 showCancelButton: true,
-                confirmButtonText: "Si, eliminar!",
-                cancelButtonText: "No, cancelar!",
+                confirmButtonText: "Si, eliminar",
+                cancelButtonText: "No, cancelar",
                 closeOnConfirm: false,
-                closeOnCancel: true
+                closeOnCancel: false
             }, function(isConfirm) {
                 
                 if (isConfirm) 
@@ -177,6 +177,8 @@ function fntDelRol(){
                             }
                         }
                     }
+                }else{
+                    swal("Acción cancelada", "" , "error");
                 }
 
             });
