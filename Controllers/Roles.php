@@ -20,18 +20,27 @@
 
 			for ($i=0; $i < count($arrData); $i++) {
 
-				if($arrData[$i]['status'] == 1)
+				if($arrData[$i]['Rol_Status'] == 1)
 				{
-					$arrData[$i]['status'] = '<span class="badge badge-success">Activo</span>';
+					$arrData[$i]['Rol_Status'] = '<span class="badge badge-success">Activo</span>';
 				}else{
-					$arrData[$i]['status'] = '<span class="badge badge-danger">Inactivo</span>';
+					$arrData[$i]['Rol_Status'] = '<span class="badge badge-danger">Inactivo</span>';
 				}
 
 				$arrData[$i]['options'] = '<div class="text-center">
-				<button class="btn btn-secondary btn-sm btnPermisosRol" rl="'.$arrData[$i]['idrol'].'" title="Permisos"><i class="fas fa-key"></i></button>
-				<button class="btn btn-primary btn-sm btnEditRol" rl="'.$arrData[$i]['idrol'].'" title="Editar"><i class="fas fa-pencil-alt"></i></button>
-				<button class="btn btn-danger btn-sm btnDelRol" rl="'.$arrData[$i]['idrol'].'" title="Eliminar"><i class="far fa-trash-alt"></i></button>
+				<button class="btn btn-secondary btn-sm btnPermisosRol" rl="'.$arrData[$i]['Rol_ID'].'" title="Permisos"><i class="fas fa-key"></i></button>
+				<button class="btn btn-primary btn-sm btnEditRol" rl="'.$arrData[$i]['Rol_ID'].'" title="Editar"><i class="fas fa-pencil-alt"></i></button>
+				<button class="btn btn-danger btn-sm btnDelRol" rl="'.$arrData[$i]['Rol_ID'].'" title="Eliminar"><i class="far fa-trash-alt"></i></button>
 				</div>';
+				/*if($_SESSION['permisosMod']['u']){
+						$btnView = '<button class="btn btn-secondary btn-sm btnPermisosRol" onClick="fntPermisos('.$arrData[$i]['Rol_ID'].')" title="Permisos"><i class="fas fa-key"></i></button>';
+						$btnEdit = '<button class="btn btn-primary btn-sm btnEditRol" onClick="fntEditRol('.$arrData[$i]['Rol_ID'].')" title="Editar"><i class="fas fa-pencil-alt"></i></button>';
+				//	}
+				//	if($_SESSION['permisosMod']['d']){
+						$btnDelete = '<button class="btn btn-danger btn-sm btnDelRol" onClick="fntDelRol('.$arrData[$i]['Rol_ID'].')" title="Eliminar"><i class="far fa-trash-alt"></i></button>
+					</div>';
+				//	}
+					$arrData[$i]['options'] = '<div class="text-center">'.$btnView.' '.$btnEdit.' '.$btnDelete.'</div>';*/
 			}
 			echo json_encode($arrData,JSON_UNESCAPED_UNICODE);
 			die();

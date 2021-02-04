@@ -14,13 +14,13 @@ document.addEventListener('DOMContentLoaded', function(){
             "dataSrc":""
         },
         "columns":[
-            {"data":"idrol"},
-            {"data":"nombrerol"},
-            {"data":"descripcion"},
-            {"data":"status"},
+            {"data":"Rol_ID"},
+            {"data":"Rol_Nom"},
+            {"data":"Rol_Desc"},
+            {"data":"Rol_Status"},
             {"data":"options"}
         ],
-        "resonsieve":"true",
+        "responsive":"true",
         "bDestroy": true,
         "iDisplayLength": 10,
         "order":[[0,"desc"]]  
@@ -111,9 +111,9 @@ function fntEditRol(){
                     var objData = JSON.parse(request.responseText);
                     if(objData.status)
                     {
-                        document.querySelector("#idRol").value = objData.data.idrol;
-                        document.querySelector("#txtNombre").value = objData.data.nombrerol;
-                        document.querySelector("#txtDescripcion").value = objData.data.descripcion;
+                        document.querySelector("#idRol").value = objData.data.Rol_ID;
+                        document.querySelector("#txtNombre").value = objData.data.Rol_Nom;
+                        document.querySelector("#txtDescripcion").value = objData.data.Rol_Desc;
 
                        if(objData.data.status == 1)
                         {
@@ -157,7 +157,7 @@ function fntDelRol(){
                 {
                     var request = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
                     var ajaxUrl = base_url+'/Roles/delRol/';
-                    var strData = "idrol="+idrol;
+                    var strData = "Rol_ID="+idrol;
                     request.open("POST",ajaxUrl,true);
                     request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
                     request.send(strData);
