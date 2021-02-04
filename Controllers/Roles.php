@@ -28,9 +28,9 @@
 				}
 
 				$arrData[$i]['options'] = '<div class="text-center">
-				<button class="btn btn-secondary btn-sm btnPermisosRol" rl="'.$arrData[$i]['Rol_ID'].'" title="Permisos"><i class="fas fa-key"></i></button>
-				<button class="btn btn-primary btn-sm btnEditRol" rl="'.$arrData[$i]['Rol_ID'].'" title="Editar"><i class="fas fa-pencil-alt"></i></button>
-				<button class="btn btn-danger btn-sm btnDelRol" rl="'.$arrData[$i]['Rol_ID'].'" title="Eliminar"><i class="far fa-trash-alt"></i></button>
+				<button class="btn btn-secondary btn-sm btnPermisosRol" rl="'.$arrData[$i]['Rol_ID'].'" title="Permisos" onClick="fntPermisos('.$arrData[$i]['Rol_ID'].')"><i class="fas fa-key"></i></button>
+				<button class="btn btn-primary btn-sm btnEditRol"rl="'.$arrData[$i]['Rol_ID'].'" title="Editar" onclick="fntEditRol('.$arrData[$i]['Rol_ID'].')"><i class="fas fa-pencil-alt"></i></button>
+				<button class="btn btn-danger btn-sm btnDelRol" rl="'.$arrData[$i]['Rol_ID'].'" title="Eliminar" onClick="fntDelRol('.$arrData[$i]['Rol_ID'].')"><i class="far fa-trash-alt"></i></button>
 				</div>';
 				/*if($_SESSION['permisosMod']['u']){
 						$btnView = '<button class="btn btn-secondary btn-sm btnPermisosRol" onClick="fntPermisos('.$arrData[$i]['Rol_ID'].')" title="Permisos"><i class="fas fa-key"></i></button>';
