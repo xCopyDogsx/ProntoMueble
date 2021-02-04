@@ -81,12 +81,13 @@ function openModal(){
     document.querySelector('#titleModal').innerHTML = "Nuevo Rol";
     document.querySelector("#formRol").reset();
 	$('#modalFormRol').modal('show');
+
 }
 
 window.addEventListener('load', function() {
     fntEditRol();
     fntDelRol();
-    //fntPermisos();
+    fntPermisos();
 }, false);
 
 function fntEditRol(){
@@ -202,7 +203,9 @@ function fntPermisos(){
                 if(request.readyState == 4 && request.status == 200){
                     document.querySelector('#contentAjax').innerHTML = request.responseText;
                     $('.modalPermisos').modal('show');
+                    //$('#modalPermisos').modal('show');
                     document.querySelector('#formPermisos').addEventListener('submit',fntSavePermisos,false);
+                    
                 }
             }
             

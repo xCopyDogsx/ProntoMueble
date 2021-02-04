@@ -102,7 +102,7 @@
 		public function delRol()
 		{
 			if($_POST){
-				$intIdrol = intval($_POST['idrol']);
+				$intIdrol = intval($_POST['Rol_ID']);
 				$requestDelete = $this->model->deleteRol($intIdrol);
 				if($requestDelete == 'ok')
 				{

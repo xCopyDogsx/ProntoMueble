@@ -1,4 +1,4 @@
-<div class="modal fade modalPermisos" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+<div class="modal fade modalPermisos" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog modal-xl">
     <div class="modal-content">
         <div class="modal-header">
@@ -14,7 +14,7 @@
             <div class="col-md-12">
               <div class="tile">
                 <form action="" id="formPermisos" name="formPermisos">
-                  <input type="hidden" id="idrol" name="idrol" value="<?= $data['idrol']; ?>" required="">
+                  <input type="hidden" id="idrol" name="idrol" value="<?= $data['Rol_ID']; ?>" required="">
                     <div class="table-responsive">
                       <table class="table">
                         <thead>
@@ -34,20 +34,20 @@
                                 for ($i=0; $i < count($modulos); $i++) { 
 
                                     $permisos = $modulos[$i]['permisos'];
-                                    $rCheck = $permisos['r'] == 1 ? " checked " : "";
-                                    $wCheck = $permisos['w'] == 1 ? " checked " : "";
-                                    $uCheck = $permisos['u'] == 1 ? " checked " : "";
-                                    $dCheck = $permisos['d'] == 1 ? " checked " : "";
+                                    $rCheck = $permisos['Perm_Vista'] == 1 ? " checked " : "";
+                                    $wCheck = $permisos['Perm_Crear'] == 1 ? " checked " : "";
+                                    $uCheck = $permisos['Perm_Act'] == 1 ? " checked " : "";
+                                    $dCheck = $permisos['Perm_Elim'] == 1 ? " checked " : "";
 
-                                    $idmod = $modulos[$i]['idmodulo'];
+                                    $idmod = $modulos[$i]['Mod_ID'];
                             ?>
                           <tr>
                             <td>
                                 <?= $no; ?>
-                                <input type="hidden" name="modulos[<?= $i; ?>][idmodulo]" value="<?= $idmod ?>" required >
+                                <input type="hidden" name="modulos[<?= $i; ?>][Mod_ID]" value="<?= $idmod ?>" required >
                             </td>
                             <td>
-                                <?= $modulos[$i]['titulo']; ?>
+                                <?= $modulos[$i]['Mod_Nom']; ?>
                             </td>
                             <td><div class="toggle-flip">
                                   <label>
