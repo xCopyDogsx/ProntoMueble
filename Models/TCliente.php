@@ -59,12 +59,14 @@ trait TCliente{
 			foreach ($productos as $producto) {
 				$query_insert  = "INSERT INTO detalle_temp(Per_ID,Prod_ID,Temp_Precio,Temp_Cant,Temp_TransID) 
 								  VALUES(?,?,?,?,?)";
+
 	        	$arrData = array($this->intIdUsuario,
-	        					$producto['Prod_ID'],
-	    						$producto['Temp_Precio'],
-	    						$producto['Temp_Cant'],
+	        					$producto['idproducto'],
+	    						$producto['precio'],
+	    						$producto['cantidad'],
 	    						$this->intIdTransaccion
 	    					);
+	        	echo dep($arrData);
 	        	$request_insert = $this->con->insert($query_insert,$arrData);
 			}
 		}else{
@@ -75,10 +77,11 @@ trait TCliente{
 			foreach ($productos as $producto) {
 				$query_insert  = "INSERT INTO detalle_temp(Per_ID,Prod_ID,Temp_Precio,Temp_Cant,Temp_TransID) 
 								  VALUES(?,?,?,?,?)";
+								  echo dep($arrData);
 	        	$arrData = array($this->intIdUsuario,
-	        					$producto['Prod_ID'],
-	    						$producto['Temp_Precio'],
-	    						$producto['Temp_Cant'],
+	        					$producto['idproducto'],
+	    						$producto['precio'],
+	    						$producto['cantidad'],
 	    						$this->intIdTransaccion
 	    					);
 	        	$request_insert = $this->con->insert($query_insert,$arrData);

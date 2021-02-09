@@ -58,7 +58,7 @@
 						   p.Perm_Vista,
 						   p.Perm_Crear,
 						   p.Perm_Act,
-						   p.Per_Elim 
+						   p.Perm_Elim 
 					FROM permisos p 
 					INNER JOIN modulo m
 					ON p.Mod_ID = m.Mod_ID

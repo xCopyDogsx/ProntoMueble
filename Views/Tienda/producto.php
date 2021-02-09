@@ -3,7 +3,8 @@ headerTienda($data);
 $arrProducto = $data['producto'];
 $arrProductos = $data['productos'];
 $arrImages = $arrProducto['images']; 
-$rutacategoria = $arrProducto['categoriaid'].'/'.$arrProducto['ruta_categoria'];
+$rutacategoria = $arrProducto['Cat_ID'].'/'.$arrProducto['ruta_categoria'];
+ //echo dep($arrProducto);
  ?>
 <br><br><br>
 <hr>
@@ -42,7 +43,7 @@ $rutacategoria = $arrProducto['categoriaid'].'/'.$arrProducto['ruta_categoria'];
 							 ?>
 								<div class="item-slick3" data-thumb="<?= $arrImages[$img]['url_image']; ?>">
 									<div class="wrap-pic-w pos-relative">
-										<img src="<?= $arrImages[$img]['url_image']; ?>" alt="<?= $arrProducto['nombre']; ?>">
+										<img src="<?= $arrImages[$img]['url_image']; ?>" alt="<?= $arrProducto['Prod_Nom']; ?>">
 										<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="<?= $arrImages[$img]['url_image']; ?>">
 											<i class="fa fa-expand"></i>
 										</a>
@@ -129,7 +130,7 @@ $rutacategoria = $arrProducto['categoriaid'].'/'.$arrProducto['ruta_categoria'];
 				<?php 
 					if(!empty($arrProductos)){
 						for ($p=0; $p < count($arrProductos); $p++) { 
-							$ruta = $arrProductos[$p]['ruta'];
+							$ruta = $arrProductos[$p]['Prod_Ruta'];
 							if(count($arrProductos[$p]['images']) > 0 ){
 								$portada = $arrProductos[$p]['images'][0]['url_image'];
 							}else{

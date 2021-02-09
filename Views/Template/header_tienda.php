@@ -1,5 +1,6 @@
 <?php 
 	$cantCarrito = 0;
+	$estado=0; 
 	if(isset($_SESSION['arrCarrito']) and count($_SESSION['arrCarrito']) > 0){ 
 		foreach($_SESSION['arrCarrito'] as $product) {
 			$cantCarrito += $product['cantidad'];
@@ -84,16 +85,21 @@
 					<!-- Logo desktop -->		
 					<a href="<?= base_url(); ?>" class="logo">
 						<img src="<?= media() ?>/tienda/images/logo2.png" alt="Tienda Virtual">
-					</a>
-
+					</a>		
 					<!-- Menu desktop -->
 					<div class="menu-desktop">
 						<ul class="main-menu">
-							<li class="active-menu">
+							<li class="<?php $url=base_url();
+							
+							if($url=$url."/home"){
+								$estado=0;
+							}
+							if($estado==0&&$estado<1){echo "active-menu";}?>">
 								<a href="<?= base_url(); ?>">Inicio</a>
 							</li>
 
-							<li>
+
+							<li class="">
 								<a href="<?= base_url(); ?>/tienda">Tienda</a>
 							</li>
 
@@ -102,7 +108,7 @@
 							</li>
 
 							<li>
-								<a href="<?= base_url(); ?>/nosotros">Nosotro</a>
+								<a href="<?= base_url(); ?>/nosotros">Nosotros</a>
 							</li>
 
 							<li>

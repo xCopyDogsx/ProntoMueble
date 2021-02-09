@@ -63,14 +63,14 @@ trait TProducto{
 							p.Prod_Ruta,
 							p.Prod_Stock
 					FROM producto p 
-					INNER JOIN cat_prod c
+					INNER JOIN prod_cat c
 					ON p.Cat_ID = c.Cat_ID
 					WHERE p.Prod_Status != 0 AND p.Cat_ID = $this->intIdcategoria AND c.Cat_Ruta = '{$this->strRuta}' ";
 					$request = $this->con->select_all($sql);
 					if(count($request) > 0){
 						for ($c=0; $c < count($request) ; $c++) { 
 							$intIdProducto = $request[$c]['Prod_ID'];
-							$sqlImg = "SELECT img
+							$sqlImg = "SELECT Img_Nom
 									FROM imagen
 									WHERE Prod_ID = $intIdProducto";
 							$arrImg = $this->con->select_all($sqlImg);

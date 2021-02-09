@@ -41,16 +41,16 @@
 					</h4>
 
 					<p class="stext-107 cl7 size-201">
-						Av. Las Américas Zona 13 <br>
-						Tel: (+52) 242424-2424
+						Calle 13 #17-54, Bogotá Colombia <br>
+						Tel: (+57) 313123123
 					</p>
 
 					<div class="p-t-27">
-						<a href="https://facebook.com/abelosh" target="_blanck" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+						<a href="https://facebook.com/" target="_blanck" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
 							<i class="fa fa-facebook"></i>
 						</a>
 
-						<a href="https://instagram.com/febel24" target="_blanck"  class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+						<a href="https://instagram.com/" target="_blanck"  class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
 							<i class="fa fa-instagram"></i>
 						</a>
 					</div>

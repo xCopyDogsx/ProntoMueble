@@ -30,12 +30,14 @@
 				}else{
 					$strUsuario  =  strtolower(strClean($_POST['txtEmail']));
 					$strPassword = hash("SHA256",$_POST['txtPassword']);
+					
 					$requestUser = $this->model->loginUser($strUsuario, $strPassword);
+					
 					if(empty($requestUser)){
 						$arrResponse = array('status' => false, 'msg' => 'El usuario o la contraseña es incorrecto.' ); 
 					}else{
 						$arrData = $requestUser;
-						if($arrData['status'] == 1){
+						if($arrData['Per_Status'] == 1){
 							$_SESSION['idUser'] = $arrData['Per_ID'];
 							$_SESSION['login'] = true;
 
@@ -45,7 +47,7 @@
 						}else{
 							$arrResponse = array('status' => false, 'msg' => 'Usuario inactivo.');
 						}
-					}
+				}
 				}
 				echo json_encode($arrResponse,JSON_UNESCAPED_UNICODE);
 			}
