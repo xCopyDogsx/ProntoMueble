@@ -1,3 +1,4 @@
+
 function controlTag(e) {
     tecla = (document.all) ? e.keyCode : e.which;
     if (tecla==8) return true; 
@@ -8,7 +9,7 @@ function controlTag(e) {
 }
 
 function testText(txtString){
-    var stringText = new RegExp(/^[a-zA-ZÃ‘Ã±ÃÃ¡Ã‰Ã©ÃÃ­Ã“Ã³ÃšÃºÃœÃ¼\s]+$/);
+    var stringText = new RegExp(/^[a-zA-ZÑñÁáÉéÍíÓóÚúÜü\s]+$/);
     if(stringText.test(txtString)){
         return true;
     }else{

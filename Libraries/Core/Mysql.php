@@ -1,12 +1,17 @@
 <?php 
-	class Mysql extends Conexion{
+	
+	class Mysql extends Conexion
+	{
 		private $conexion;
 		private $strquery;
 		private $arrValues;
-		function __construct(){
+
+		function __construct()
+		{
 			$this->conexion = new Conexion();
 			$this->conexion = $this->conexion->conect();
 		}
+
 		//Insertar un registro
 		public function insert(string $query, array $arrValues)
 		{
@@ -16,7 +21,6 @@
         	$resInsert = $insert->execute($this->arrVAlues);
         	if($resInsert)
 	        {
-	        	
 	        	$lastInsert = $this->conexion->lastInsertId();
 	        }else{
 	        	$lastInsert = 0;
@@ -59,4 +63,7 @@
         	return $del;
 		}
 	}
+
+
  ?>
+

@@ -1,5 +1,7 @@
 <?php 
-	class RolesModel extends Mysql{
+
+	class RolesModel extends Mysql
+	{
 		public $intIdrol;
 		public $strRol;
 		public $strDescripcion;
@@ -12,15 +14,19 @@
 
 		public function selectRoles()
 		{
+			$whereAdmin = "";
+			if($_SESSION['idUser'] != 1 ){
+				$whereAdmin = " and Rol_ID != 1 ";
+			}
 			//EXTRAE ROLES
-			$sql = "SELECT * FROM rol WHERE Rol_Status != 0";
+			$sql = "SELECT * FROM rol WHERE Rol_Status != 0".$whereAdmin;
 			$request = $this->select_all($sql);
 			return $request;
 		}
 
 		public function selectRol(int $idrol)
 		{
-			//BUSCAR ROL
+			//BUSCAR ROLE
 			$this->intIdrol = $idrol;
 			$sql = "SELECT * FROM rol WHERE Rol_ID = $this->intIdrol";
 			$request = $this->select($sql);
@@ -34,7 +40,7 @@
 			$this->strDescripcion = $descripcion;
 			$this->intStatus = $status;
 
-			$sql = "SELECT Rol_Nom FROM rol WHERE Rol_Nom = '{$this->strRol}' ";
+			$sql = "SELECT * FROM rol WHERE Rol_Nom = '{$this->strRol}' ";
 			$request = $this->select_all($sql);
 
 			if(empty($request))
@@ -76,9 +82,9 @@
 			$request = $this->select_all($sql);
 			if(empty($request))
 			{
-				$sql = "DELETE from rol WHERE Rol_ID = $this->intIdrol ";
+				$sql = "DELETE FROM rol WHERE Rol_ID = $this->intIdrol ";
 				$arrData = array(0);
-				$request = $this->delete($sql,$arrData);
+				$request = $this->update($sql,$arrData);
 				if($request)
 				{
 					$request = 'ok';	

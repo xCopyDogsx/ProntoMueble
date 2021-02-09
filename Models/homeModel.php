@@ -1,7 +1,16 @@
 <?php 
-	class HomeModel extends Mysql{
-		public function __construct() {
-		 parent::__construct();
+	
+	class HomeModel extends Mysql
+	{
+		private $objCategoria;
+		public function __construct()
+		{
+			parent::__construct();
+			
 		}
+
+		public function getCategorias(){
+			
+		}	
 	}
  ?>
