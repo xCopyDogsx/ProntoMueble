@@ -36,6 +36,10 @@
                   <label for="txtEmail">Email <span class="required">*</span></label>
                   <input type="email" class="form-control valid validEmail" id="txtEmail" name="txtEmail" required="">
                 </div>
+                 <div class="form-group col-md-4">
+                  <label for="txtNacimiento">Fecha de nacimiento <span class="required">*</span></label>
+                  <input type="date" class="form-control" id="txtNac" name="txtNac" required="">
+                </div>
                 <div class="form-group col-md-4">
                   <label for="txtPassword">Password </label>
                   <input type="password" class="form-control" id="txtPassword" name="txtPassword" >
@@ -89,20 +93,12 @@
               <td id="celEmail">Larry</td>
             </tr>
             <tr>
-              <td>Identificación Tributaria:</td>
-              <td id="celIde">Larry</td>
-            </tr>
-            <tr>
-              <td>Nombre Fiscal:</td>
-              <td id="celNomFiscal">Larry</td>
-            </tr>
-            <tr>
-              <td>Dirección Fiscal:</td>
-              <td id="celDirFiscal">Larry</td>
-            </tr>
-            <tr>
               <td>Fecha registro:</td>
               <td id="celFechaRegistro">Larry</td>
+            </tr>
+            <tr>
+              <td>Fecha de nacimiento:</td>
+              <td id="celFechaNacimiento">Larry</td>
             </tr>
           </tbody>
         </table>

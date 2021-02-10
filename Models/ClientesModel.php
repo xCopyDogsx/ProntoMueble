@@ -11,16 +11,14 @@ class ClientesModel extends Mysql
 	private $strToken;
 	private $intTipoId;
 	private $intStatus;
-	private $strNit;
-	private $strNomFiscal;
-	private $strDirFiscal;
+	private $strFechaNac;
 
 	public function __construct()
 	{
 		parent::__construct();
 	}	
 
-	public function insertCliente(string $identificacion, string $nombre, string $apellido, int $telefono, string $email, string $password, int $tipoid){
+	public function insertCliente(string $identificacion, string $nombre, string $apellido, int $telefono, string $email, string $password,$fechaNac,int $tipoid){
 
 		$this->strIdentificacion = $identificacion;
 		$this->strNombre = $nombre;
@@ -28,10 +26,9 @@ class ClientesModel extends Mysql
 		$this->intTelefono = $telefono;
 		$this->strEmail = $email;
 		$this->strPassword = $password;
+		$this->strFechaNac = $fechaNac;
 		$this->intTipoId = $tipoid;
-		$this->strNit = $nit;
-		$this->strNomFiscal = $nomFiscal;
-		$this->strDirFiscal = $dirFiscal;
+
 
 		$return = 0;
 		$sql = "SELECT * FROM persona WHERE 
@@ -40,15 +37,16 @@ class ClientesModel extends Mysql
 
 		if(empty($request))
 		{
-			$query_insert  = "INSERT INTO persona(Per_Doc,Per_Nom,Per_Ape,Per_Tel,Per_Email,Per_Passw,Rol_ID) 
-							  VALUES(?,?,?,?,?,?,?)";
+			$query_insert  = "INSERT INTO persona(Per_Doc,Per_Nom,Per_Ape,Per_Tel,Per_Email,Per_Passw,Per_FecNac,Rol_ID) 
+							  VALUES(?,?,?,?,?,?,?,?)";
         	$arrData = array($this->strIdentificacion,
     						$this->strNombre,
     						$this->strApellido,
     						$this->intTelefono,
     						$this->strEmail,
     						$this->strPassword,
-    						$this->intTipoId,
+    						$this->strFechaNac,
+    						$this->intTipoId    						
     								);
         	$request_insert = $this->insert($query_insert,$arrData);
         	$return = $request_insert;
@@ -69,7 +67,7 @@ class ClientesModel extends Mysql
 
 	public function selectCliente(int $idpersona){
 		$this->intIdUsuario = $idpersona;
-		$sql = "SELECT Per_ID,Per_Doc,Per_Nom,Per_Ape,Per_Tel,Per_Email,Per_Status, DATE_FORMAT(Per_FecReg, '%d-%m-%Y') as fechaRegistro 
+		$sql = "SELECT Per_ID,Per_Doc,Per_Nom,Per_Ape,Per_Tel,Per_Email,Per_Status, DATE_FORMAT(Per_FecReg, '%d-%m-%Y') as fechaRegistro, DATE_FORMAT(Per_FecNac, '%d-%m-%Y') as fechaNacimiento
 				FROM persona
 				WHERE Per_ID = $this->intIdUsuario and Rol_ID = 7";
 		$request = $this->select($sql);

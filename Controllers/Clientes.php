@@ -29,7 +29,7 @@ class Clientes extends Controllers{
 	public function setCliente(){
 		error_reporting(0);
 		if($_POST){
-			if(empty($_POST['txtIdentificacion']) || empty($_POST['txtNombre']) || empty($_POST['txtApellido']) || empty($_POST['txtTelefono']) || empty($_POST['txtEmail']) || empty($_POST['txtNit']) || empty($_POST['txtNombreFiscal']) || empty($_POST['txtDirFiscal']) )
+			if(empty($_POST['txtIdentificacion']) || empty($_POST['txtNombre']) || empty($_POST['txtApellido']) || empty($_POST['txtTelefono']) || empty($_POST['txtEmail']) || empty($_POST['txtNac']))
 			{
 				$arrResponse = array("status" => false, "msg" => 'Datos incorrectos.');
 			}else{ 
@@ -39,9 +39,7 @@ class Clientes extends Controllers{
 				$strApellido = ucwords(strClean($_POST['txtApellido']));
 				$intTelefono = intval(strClean($_POST['txtTelefono']));
 				$strEmail = strtolower(strClean($_POST['txtEmail']));
-				$strNit = strClean($_POST['txtNit']);
-				$strNomFiscal = strClean($_POST['txtNombreFiscal']);
-				$strDirFiscal = strClean($_POST['txtDirFiscal']);
+				$strFecNac = $_POST['txtNac'];
 				$intTipoId = 7;
 				$request_user = "";
 				if($idUsuario == 0)
@@ -56,10 +54,9 @@ class Clientes extends Controllers{
 																			$intTelefono, 
 																			$strEmail,
 																			$strPasswordEncript,
-																			$intTipoId, 
-																			$strNit,
-																			$strNomFiscal,
-																			$strDirFiscal );
+																			$strFecNac,
+																			$intTipoId 
+																			 );
 					}
 				}else{
 					$option = 2;
@@ -72,9 +69,7 @@ class Clientes extends Controllers{
 																	$intTelefono, 
 																	$strEmail,
 																	$strPassword, 
-																	$strNit,
-																	$strNomFiscal, 
-																	$strDirFiscal);
+																	$strFecNac);
 					}
 				}
 
