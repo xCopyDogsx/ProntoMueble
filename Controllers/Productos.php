@@ -15,11 +15,11 @@
 
 		public function Productos()
 		{
-			if(empty($_SESSION['permisosMod']['r'])){
+			if(empty($_SESSION['permisosMod']['Perm_Vista'])){
 				header("Location:".base_url().'/dashboard');
 			}
 			$data['page_tag'] = "Productos";
-			$data['page_title'] = "PRODUCTOS <small>Tienda Virtual</small>";
+			$data['page_title'] = "PRODUCTOS <small>Pronto Mueble</small>";
 			$data['page_name'] = "productos";
 			$data['page_functions_js'] = "functions_productos.js";
 			$this->views->getView($this,"productos",$data);
@@ -27,7 +27,7 @@
 
 		public function getProductos()
 		{
-			if($_SESSION['permisosMod']['r']){
+			if($_SESSION['permisosMod']['Perm_Vista']){
 				$arrData = $this->model->selectProductos();
 				for ($i=0; $i < count($arrData); $i++) {
 					$btnView = '';
@@ -42,13 +42,13 @@
 					}
 
 					$arrData[$i]['precio'] = SMONEY.' '.formatMoney($arrData[$i]['precio']);
-					if($_SESSION['permisosMod']['r']){
+					if($_SESSION['permisosMod']['Perm_Vista']){
 						$btnView = '<button class="btn btn-info btn-sm" onClick="fntViewInfo('.$arrData[$i]['idproducto'].')" title="Ver producto"><i class="far fa-eye"></i></button>';
 					}
-					if($_SESSION['permisosMod']['u']){
+					if($_SESSION['permisosMod']['Perm_Act']){
 						$btnEdit = '<button class="btn btn-primary  btn-sm" onClick="fntEditInfo(this,'.$arrData[$i]['idproducto'].')" title="Editar producto"><i class="fas fa-pencil-alt"></i></button>';
 					}
-					if($_SESSION['permisosMod']['d']){	
+					if($_SESSION['permisosMod']['Perm_Elim']){	
 						$btnDelete = '<button class="btn btn-danger btn-sm" onClick="fntDelInfo('.$arrData[$i]['idproducto'].')" title="Eliminar producto"><i class="far fa-trash-alt"></i></button>';
 					}
 					$arrData[$i]['options'] = '<div class="text-center">'.$btnView.' '.$btnEdit.' '.$btnDelete.'</div>';
@@ -81,7 +81,7 @@
 					if($idProducto == 0)
 					{
 						$option = 1;
-						if($_SESSION['permisosMod']['w']){
+						if($_SESSION['permisosMod']['Perm_Crear']){
 							$request_producto = $this->model->insertProducto($strNombre, 
 																		$strDescripcion, 
 																		$strCodigo, 
@@ -93,7 +93,7 @@
 						}
 					}else{
 						$option = 2;
-						if($_SESSION['permisosMod']['u']){
+						if($_SESSION['permisosMod']['Perm_Act']){
 							$request_producto = $this->model->updateProducto($idProducto,
 																		$strNombre,
 																		$strDescripcion, 
@@ -124,7 +124,7 @@
 		}
 
 		public function getProducto($idproducto){
-			if($_SESSION['permisosMod']['r']){
+			if($_SESSION['permisosMod']['Perm_Vista']){
 				$idproducto = intval($idproducto);
 				if($idproducto > 0){
 					$arrData = $this->model->selectProducto($idproducto);
@@ -191,7 +191,7 @@
 
 		public function delProducto(){
 			if($_POST){
-				if($_SESSION['permisosMod']['d']){
+				if($_SESSION['permisosMod']['Perm_Elim']){
 					$intIdproducto = intval($_POST['idProducto']);
 					$requestDelete = $this->model->deleteProducto($intIdproducto);
 					if($requestDelete)

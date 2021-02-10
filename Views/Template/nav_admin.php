@@ -36,6 +36,7 @@
                 <span class="app-menu__label">Clientes</span>
             </a>
         </li>
+
         <?php } ?>
         <?php if(!empty($_SESSION['permisos'][4]['Perm_Vista']) || !empty($_SESSION['permisos'][6]['Perm_Vista'])){ ?>
         <li class="treeview">

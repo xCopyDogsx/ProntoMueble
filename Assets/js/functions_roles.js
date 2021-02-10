@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function(){
         "responsive":"true",
         "bDestroy": true,
         "iDisplayLength": 10,
-        "order":[[0,"desc"]]  
+        "order":[[0,"asc"]]  
     });
 
     //NUEVO ROL
@@ -109,7 +109,7 @@ function fntEditRol(idrol){
                 document.querySelector("#txtNombre").value = objData.data.Rol_Nom;
                 document.querySelector("#txtDescripcion").value = objData.data.Rol_Desc;
 
-                if(objData.data.status == 1)
+                if(objData.data.Rol_Status == 1)
                 {
                     var optionSelect = '<option value="1" selected class="notBlock">Activo</option>';
                 }else{

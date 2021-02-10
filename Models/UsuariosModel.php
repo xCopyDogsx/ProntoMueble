@@ -63,7 +63,7 @@
 			if($_SESSION['idUser'] != 1 ){
 				$whereAdmin = " and p.Per_ID != 1 ";
 			}
-			$sql = "SELECT p.Per_ID,p.Per_Doc,p.Per_Nom,p.Per_Ape,p.Per_Tel,p.Per_Email,p.Per_Status,r.Rol_ID,r.Rol_Nom 
+			$sql = "SELECT p.Per_ID,p.Per_Doc,p.Per_Nom,p.Per_Ape,p.Per_Tel,p.Per_Email,p.Per_Status,p.Per_FecReg,p.Per_FecNac,p.Rol_ID,r.Rol_Nom 
 					FROM persona p 
 					INNER JOIN rol r
 					ON p.Rol_ID = r.Rol_ID
@@ -73,7 +73,7 @@
 		}
 		public function selectUsuario(int $idpersona){
 			$this->intIdUsuario = $idpersona;
-			$sql = "SELECT p.Per_ID,p.Per_Doc,p.Per_Nom,p.Per_Ape,p.Per_Tel,p.Per_Email,r.Rol_ID,r.Rol_Nom,p.Per_Status, DATE_FORMAT(p.Per_FecReg, '%d-%m-%Y') as fechaRegistro 
+			$sql = "SELECT p.Per_ID,p.Per_Doc,p.Per_Nom,p.Per_Ape,p.Per_Tel,p.Per_Email,r.Rol_ID,r.Rol_Nom,p.Per_Status, DATE_FORMAT(p.Per_FecReg, '%d-%m-%Y') as fechaRegistro, DATE_FORMAT(p.Per_FecNac, '%d-%m-%Y') as fechaNacimiento
 					FROM persona p
 					INNER JOIN rol r
 					ON p.Rol_ID = r.Rol_ID
@@ -113,7 +113,7 @@
 	        						$this->intTipoId,
 	        						$this->intStatus);
 				}else{
-					$sql = "UPDATE persona SET Per_Doc=?, Per_Nom=?, Per_Ape=?, Per_Telefono=?, Per_Email=?, Rol_ID=?, Per_Status=? 
+					$sql = "UPDATE persona SET Per_Doc=?, Per_Nom=?, Per_Ape=?, Per_Tel=?, Per_Email=?, Rol_ID=?, Per_Status=? 
 							WHERE Per_ID = $this->intIdUsuario ";
 					$arrData = array($this->strIdentificacion,
 	        						$this->strNombre,

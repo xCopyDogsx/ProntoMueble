@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function(){
             {"data":"Per_Ape"},
             {"data":"Per_Email"},
             {"data":"Per_Tel"},
-            {"data":"Rol_Nom"},
+            {"data":"Rol_Nom"},      
             {"data":"Per_Status"},
             {"data":"options"}
         ],
@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function(){
         "responsive":"true",
         "bDestroy": true,
         "iDisplayLength": 10,
-        "order":[[0,"desc"]]  
+        "order":[[0,"asc"]]  
     });
 
     if(document.querySelector("#formUsuario")){
@@ -186,6 +186,8 @@ document.addEventListener('DOMContentLoaded', function(){
             }
         }
     }
+}, false);
+
 
 window.addEventListener('load', function() {
         fntRolesUsuario();
@@ -217,7 +219,7 @@ function fntViewUsuario(idpersona){
 
             if(objData.status)
             {
-               let estadoUsuario = objData.data.status == 1 ? 
+               let estadoUsuario = objData.data.Per_Status == 1 ? 
                 '<span class="badge badge-success">Activo</span>' : 
                 '<span class="badge badge-danger">Inactivo</span>';
 
@@ -229,6 +231,7 @@ function fntViewUsuario(idpersona){
                 document.querySelector("#celTipoUsuario").innerHTML = objData.data.Rol_Nom;
                 document.querySelector("#celEstado").innerHTML = estadoUsuario;
                 document.querySelector("#celFechaRegistro").innerHTML = objData.data.fechaRegistro; 
+                document.querySelector("#celFechaNacimiento").innerHTML = objData.data.fechaNacimiento; 
                 $('#modalViewUser').modal('show');
             }else{
                 swal("Error", objData.msg , "error");
@@ -263,7 +266,7 @@ function fntEditUsuario(element,idpersona){
                 document.querySelector("#listRolid").value =objData.data.Rol_ID;
                 $('#listRolid').selectpicker('render');
 
-                if(objData.data.status == 1){
+                if(objData.data.Per_Status == 1){
                     document.querySelector("#listStatus").value = 1;
                 }else{
                     document.querySelector("#listStatus").value = 2;

@@ -42,23 +42,6 @@
                 </div>
               </div>
               <hr>
-              <p class="text-primary">Datos Fiscales.</p>
-              <div class="form-row">
-                <div class="form-group col-md-6">
-                  <label>Identificación Tributaria <span class="required">*</span></label>
-                  <input class="form-control" type="text" id="txtNit" name="txtNit" required="">
-                </div>
-                <div class="form-group col-md-6">
-                  <label>Nombre fiscal <span class="required">*</span></label>
-                  <input class="form-control" type="text" id="txtNombreFiscal" name="txtNombreFiscal" required="">
-                </div>
-
-                <div class="form-group col-md-12">
-                  <label>Dirección fiscal <span class="required">*</span></label>
-                  <input class="form-control" type="text" id="txtDirFiscal" name="txtDirFiscal" required="">
-                </div>
-                
-              </div>
              <div class="form-row">
                 
              </div>

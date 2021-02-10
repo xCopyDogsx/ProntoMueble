@@ -6,7 +6,7 @@
       <div class="app-title">
         <div>
             <h1><i class="fas fa-user-tag"></i> <?= $data['page_title'] ?>
-                <?php if($_SESSION['permisosMod']['Perm_Vista']){ ?>
+                <?php if($_SESSION['permisosMod']['Perm_Crear']){ ?>
                 <button class="btn btn-primary" type="button" onclick="openModal();" ><i class="fas fa-plus-circle"></i> Nuevo</button>
               <?php } ?>
             </h1>
