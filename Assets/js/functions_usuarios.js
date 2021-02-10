@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function(){
                 "className": "btn btn-info"
             }
         ],
-        "resonsieve":"true",
+        "responsive":"true",
         "bDestroy": true,
         "iDisplayLength": 10,
         "order":[[0,"desc"]]  
@@ -186,55 +186,6 @@ document.addEventListener('DOMContentLoaded', function(){
             }
         }
     }
-    //Actualizar Datos Fiscales
-    if(document.querySelector("#formDataFiscal")){
-        let formDataFiscal = document.querySelector("#formDataFiscal");
-        formDataFiscal.onsubmit = function(e) {
-            e.preventDefault();
-            let strNit = document.querySelector('#txtNit').value;
-            let strNombreFiscal = document.querySelector('#txtNombreFiscal').value;
-            let strDirFiscal = document.querySelector('#txtDirFiscal').value;
-           
-            if(strNit == '' || strNombreFiscal == '' || strDirFiscal == '' )
-            {
-                swal("Atención", "Todos los campos son obligatorios." , "error");
-                return false;
-            }
-            divLoading.style.display = "flex";
-            let request = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
-            let ajaxUrl = base_url+'/Usuarios/putDFical'; 
-            let formData = new FormData(formDataFiscal);
-            request.open("POST",ajaxUrl,true);
-            request.send(formData);
-            request.onreadystatechange = function(){
-                if(request.readyState != 4 ) return; 
-                if(request.status == 200){
-                    let objData = JSON.parse(request.responseText);
-                    if(objData.status)
-                    {
-                        $('#modalFormPerfil').modal("hide");
-                        swal({
-                            title: "",
-                            text: objData.msg,
-                            type: "success",
-                            confirmButtonText: "Aceptar",
-                            closeOnConfirm: false,
-                        }, function(isConfirm) {
-                            if (isConfirm) {
-                                location.reload();
-                            }
-                        });
-                    }else{
-                        swal("Error", objData.msg , "error");
-                    }
-                }
-                divLoading.style.display = "none";
-                return false;
-            }
-        }
-    }
-}, false);
-
 
 window.addEventListener('load', function() {
         fntRolesUsuario();
@@ -270,12 +221,12 @@ function fntViewUsuario(idpersona){
                 '<span class="badge badge-success">Activo</span>' : 
                 '<span class="badge badge-danger">Inactivo</span>';
 
-                document.querySelector("#celIdentificacion").innerHTML = objData.data.identificacion;
-                document.querySelector("#celNombre").innerHTML = objData.data.nombres;
-                document.querySelector("#celApellido").innerHTML = objData.data.apellidos;
-                document.querySelector("#celTelefono").innerHTML = objData.data.telefono;
-                document.querySelector("#celEmail").innerHTML = objData.data.email_user;
-                document.querySelector("#celTipoUsuario").innerHTML = objData.data.nombrerol;
+                document.querySelector("#celIdentificacion").innerHTML = objData.data.Per_Doc;
+                document.querySelector("#celNombre").innerHTML = objData.data.Per_Nom;
+                document.querySelector("#celApellido").innerHTML = objData.data.Per_Ape;
+                document.querySelector("#celTelefono").innerHTML = objData.data.Per_Tel;
+                document.querySelector("#celEmail").innerHTML = objData.data.Per_Email;
+                document.querySelector("#celTipoUsuario").innerHTML = objData.data.Rol_Nom;
                 document.querySelector("#celEstado").innerHTML = estadoUsuario;
                 document.querySelector("#celFechaRegistro").innerHTML = objData.data.fechaRegistro; 
                 $('#modalViewUser').modal('show');
@@ -303,13 +254,13 @@ function fntEditUsuario(element,idpersona){
 
             if(objData.status)
             {
-                document.querySelector("#idUsuario").value = objData.data.idpersona;
-                document.querySelector("#txtIdentificacion").value = objData.data.identificacion;
-                document.querySelector("#txtNombre").value = objData.data.nombres;
-                document.querySelector("#txtApellido").value = objData.data.apellidos;
-                document.querySelector("#txtTelefono").value = objData.data.telefono;
-                document.querySelector("#txtEmail").value = objData.data.email_user;
-                document.querySelector("#listRolid").value =objData.data.idrol;
+                document.querySelector("#idUsuario").value = objData.data.Per_ID;
+                document.querySelector("#txtIdentificacion").value = objData.data.Per_Doc;
+                document.querySelector("#txtNombre").value = objData.data.Per_Nom;
+                document.querySelector("#txtApellido").value = objData.data.Per_Ape;
+                document.querySelector("#txtTelefono").value = objData.data.Per_Tel;
+                document.querySelector("#txtEmail").value = objData.data.Per_Email;
+                document.querySelector("#listRolid").value =objData.data.Rol_ID;
                 $('#listRolid').selectpicker('render');
 
                 if(objData.data.status == 1){

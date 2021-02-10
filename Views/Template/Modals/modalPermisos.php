@@ -51,25 +51,25 @@
                             </td>
                             <td><div class="toggle-flip">
                                   <label>
-                                    <input type="checkbox" name="modulos[<?= $i; ?>][r]" <?= $rCheck ?> ><span class="flip-indecator" data-toggle-on="ON" data-toggle-off="OFF"></span>
+                                    <input type="checkbox" name="modulos[<?= $i; ?>][Perm_Vista]" <?= $rCheck ?> ><span class="flip-indecator" data-toggle-on="ON" data-toggle-off="OFF"></span>
                                   </label>
                                 </div>
                             </td>
                             <td><div class="toggle-flip">
                                   <label>
-                                    <input type="checkbox" name="modulos[<?= $i; ?>][w]" <?= $wCheck ?>><span class="flip-indecator" data-toggle-on="ON" data-toggle-off="OFF"></span>
+                                    <input type="checkbox" name="modulos[<?= $i; ?>][Perm_Crear]" <?= $wCheck ?>><span class="flip-indecator" data-toggle-on="ON" data-toggle-off="OFF"></span>
                                   </label>
                                 </div>
                             </td>
                             <td><div class="toggle-flip">
                                   <label>
-                                    <input type="checkbox" name="modulos[<?= $i; ?>][u]" <?= $uCheck ?>><span class="flip-indecator" data-toggle-on="ON" data-toggle-off="OFF"></span>
+                                    <input type="checkbox" name="modulos[<?= $i; ?>][Perm_Act]" <?= $uCheck ?>><span class="flip-indecator" data-toggle-on="ON" data-toggle-off="OFF"></span>
                                   </label>
                                 </div>
                             </td>
                             <td><div class="toggle-flip">
                                   <label>
-                                    <input type="checkbox" name="modulos[<?= $i; ?>][d]" <?= $dCheck ?>><span class="flip-indecator" data-toggle-on="ON" data-toggle-off="OFF"></span>
+                                    <input type="checkbox" name="modulos[<?= $i; ?>][Perm_Elim]" <?= $dCheck ?>><span class="flip-indecator" data-toggle-on="ON" data-toggle-off="OFF"></span>
                                   </label>
                                 </div>
                             </td>

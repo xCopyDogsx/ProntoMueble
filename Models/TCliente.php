@@ -66,7 +66,7 @@ trait TCliente{
 	    						$producto['cantidad'],
 	    						$this->intIdTransaccion
 	    					);
-	        	echo dep($arrData);
+	        	
 	        	$request_insert = $this->con->insert($query_insert,$arrData);
 			}
 		}else{

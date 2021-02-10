@@ -82,9 +82,9 @@ function openModal(){
 }
 
 window.addEventListener('load', function() {
-    fntEditRol();
+    /*fntEditRol();
     fntDelRol();
-    fntPermisos();
+    fntPermisos();*/
 }, false);
 
 function fntEditRol(idrol){
@@ -105,9 +105,9 @@ function fntEditRol(idrol){
             var objData = JSON.parse(request.responseText);
             if(objData.status)
             {
-                document.querySelector("#idRol").value = objData.data.idrol;
-                document.querySelector("#txtNombre").value = objData.data.nombrerol;
-                document.querySelector("#txtDescripcion").value = objData.data.descripcion;
+                document.querySelector("#idRol").value = objData.data.Rol_ID;
+                document.querySelector("#txtNombre").value = objData.data.Rol_Nom;
+                document.querySelector("#txtDescripcion").value = objData.data.Rol_Desc;
 
                 if(objData.data.status == 1)
                 {
