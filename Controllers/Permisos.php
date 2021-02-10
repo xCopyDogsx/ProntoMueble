@@ -26,10 +26,10 @@
 					for ($i=0; $i < count($arrModulos); $i++) {
 						$arrPermisos = array('r' => 0, 'w' => 0, 'u' => 0, 'd' => 0);
 						if(isset($arrPermisosRol[$i])){
-							$arrPermisos = array('r' => $arrPermisosRol[$i]['r'], 
-												 'w' => $arrPermisosRol[$i]['w'], 
-												 'u' => $arrPermisosRol[$i]['u'], 
-												 'd' => $arrPermisosRol[$i]['d'] 
+							$arrPermisos = array('r' => $arrPermisosRol[$i]['Perm_Vista'], 
+												 'w' => $arrPermisosRol[$i]['Perm_Crear'], 
+												 'u' => $arrPermisosRol[$i]['Perm_Act'], 
+												 'd' => $arrPermisosRol[$i]['Perm_Elim'] 
 												);
 						}
 						$arrModulos[$i]['permisos'] = $arrPermisos;

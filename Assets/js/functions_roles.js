@@ -13,13 +13,13 @@ document.addEventListener('DOMContentLoaded', function(){
             "dataSrc":""
         },
         "columns":[
-            {"data":"idrol"},
-            {"data":"nombrerol"},
-            {"data":"descripcion"},
-            {"data":"status"},
+            {"data":"Rol_ID"},
+            {"data":"Rol_Nom"},
+            {"data":"Rol_Desc"},
+            {"data":"Rol_Status"},
             {"data":"options"}
         ],
-        "resonsieve":"true",
+        "responsive":"true",
         "bDestroy": true,
         "iDisplayLength": 10,
         "order":[[0,"desc"]]  
@@ -82,9 +82,9 @@ function openModal(){
 }
 
 window.addEventListener('load', function() {
-    /*fntEditRol();
+    fntEditRol();
     fntDelRol();
-    fntPermisos();*/
+    fntPermisos();
 }, false);
 
 function fntEditRol(idrol){
@@ -113,7 +113,7 @@ function fntEditRol(idrol){
                 {
                     var optionSelect = '<option value="1" selected class="notBlock">Activo</option>';
                 }else{
-                    var optionSelect = '<option value="2" selected class="notBlock">Inactivo</option>';
+                   var optionSelect = '<option value="2" selected class="notBlock">Inactivo</option>';
                 }
                 var htmlSelect = `${optionSelect}
                                   <option value="1">Activo</option>

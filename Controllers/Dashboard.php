@@ -12,7 +12,7 @@
 				header('Location: '.base_url().'/login');
 				die();
 			}
-			if($_SESSION['rol']==7){
+			if($_SESSION['userData']['Rol_Nom']=='Cliente'){
 				header('Location: '.base_url());	
 			}
 			getPermisos(1);

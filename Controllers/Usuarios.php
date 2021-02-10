@@ -5,7 +5,7 @@
 		{
 			parent::__construct();
 			session_start();
-			session_regenerate_id(true);
+			//session_regenerate_id(true);
 			if(empty($_SESSION['login']))
 			{
 				header('Location: '.base_url().'/login');
@@ -16,11 +16,11 @@
 
 		public function Usuarios()
 		{
-			if(empty($_SESSION['permisosMod']['r'])){
+			if(empty($_SESSION['permisosMod']['Perm_Vista'])){
 				header("Location:".base_url().'/dashboard');
 			}
 			$data['page_tag'] = "Usuarios";
-			$data['page_title'] = "USUARIOS <small>Tienda Virtual</small>";
+			$data['page_title'] = "USUARIOS <small>Pronto Mueble</small>";
 			$data['page_name'] = "usuarios";
 			$data['page_functions_js'] = "functions_usuarios.js";
 			$this->views->getView($this,"usuarios",$data);
@@ -46,7 +46,7 @@
 						$option = 1;
 						$strPassword =  empty($_POST['txtPassword']) ? hash("SHA256",passGenerator()) : hash("SHA256",$_POST['txtPassword']);
 
-						if($_SESSION['permisosMod']['w']){
+						if($_SESSION['permisosMod']['Perm_Crear']){
 							$request_user = $this->model->insertUsuario($strIdentificacion,
 																				$strNombre, 
 																				$strApellido, 
@@ -59,7 +59,7 @@
 					}else{
 						$option = 2;
 						$strPassword =  empty($_POST['txtPassword']) ? "" : hash("SHA256",$_POST['txtPassword']);
-						if($_SESSION['permisosMod']['u']){
+						if($_SESSION['permisosMod']['Perm_Act']){
 							$request_user = $this->model->updateUsuario($idUsuario,
 																		$strIdentificacion, 
 																		$strNombre,
@@ -93,37 +93,37 @@
 
 		public function getUsuarios()
 		{
-			if($_SESSION['permisosMod']['r']){
+			if($_SESSION['permisosMod']['Perm_Vista']){
 				$arrData = $this->model->selectUsuarios();
 				for ($i=0; $i < count($arrData); $i++) {
 					$btnView = '';
 					$btnEdit = '';
 					$btnDelete = '';
 
-					if($arrData[$i]['status'] == 1)
+					if($arrData[$i]['Per_Status'] == 1)
 					{
-						$arrData[$i]['status'] = '<span class="badge badge-success">Activo</span>';
+						$arrData[$i]['Per_Status'] = '<span class="badge badge-success">Activo</span>';
 					}else{
-						$arrData[$i]['status'] = '<span class="badge badge-danger">Inactivo</span>';
+						$arrData[$i]['Per_Status'] = '<span class="badge badge-danger">Inactivo</span>';
 					}
 
-					if($_SESSION['permisosMod']['r']){
-						$btnView = '<button class="btn btn-info btn-sm btnViewUsuario" onClick="fntViewUsuario('.$arrData[$i]['idpersona'].')" title="Ver usuario"><i class="far fa-eye"></i></button>';
+					if($_SESSION['permisosMod']['Perm_Vista']){
+						$btnView = '<button class="btn btn-info btn-sm btnViewUsuario" onClick="fntViewUsuario('.$arrData[$i]['Per_ID'].')" title="Ver usuario"><i class="far fa-eye"></i></button>';
 					}
-					if($_SESSION['permisosMod']['u']){
-						if(($_SESSION['idUser'] == 1 and $_SESSION['userData']['idrol'] == 1) ||
-							($_SESSION['userData']['idrol'] == 1 and $arrData[$i]['idrol'] != 1) ){
-							$btnEdit = '<button class="btn btn-primary  btn-sm btnEditUsuario" onClick="fntEditUsuario(this,'.$arrData[$i]['idpersona'].')" title="Editar usuario"><i class="fas fa-pencil-alt"></i></button>';
+					if($_SESSION['permisosMod']['Perm_Act']){
+						if(($_SESSION['idUser'] == 1 and $_SESSION['userData']['Rol_ID'] == 1) ||
+							($_SESSION['userData']['idrol'] == 1 and $arrData[$i]['Rol_ID'] != 1) ){
+							$btnEdit = '<button class="btn btn-primary  btn-sm btnEditUsuario" onClick="fntEditUsuario(this,'.$arrData[$i]['Per_ID'].')" title="Editar usuario"><i class="fas fa-pencil-alt"></i></button>';
 						}else{
 							$btnEdit = '<button class="btn btn-secondary btn-sm" disabled ><i class="fas fa-pencil-alt"></i></button>';
 						}
 					}
-					if($_SESSION['permisosMod']['d']){
-						if(($_SESSION['idUser'] == 1 and $_SESSION['userData']['idrol'] == 1) ||
-							($_SESSION['userData']['idrol'] == 1 and $arrData[$i]['idrol'] != 1) and
-							($_SESSION['userData']['idpersona'] != $arrData[$i]['idpersona'] )
+					if($_SESSION['permisosMod']['Perm_Elim']){
+						if(($_SESSION['idUser'] == 1 and $_SESSION['userData']['Rol_ID'] == 1) ||
+							($_SESSION['userData']['Rol_ID'] == 1 and $arrData[$i]['Rol_ID'] != 1) and
+							($_SESSION['userData']['Per_ID'] != $arrData[$i]['Per_ID'] )
 							 ){
-							$btnDelete = '<button class="btn btn-danger btn-sm btnDelUsuario" onClick="fntDelUsuario('.$arrData[$i]['idpersona'].')" title="Eliminar usuario"><i class="far fa-trash-alt"></i></button>';
+							$btnDelete = '<button class="btn btn-danger btn-sm btnDelUsuario" onClick="fntDelUsuario('.$arrData[$i]['Per_ID'].')" title="Eliminar usuario"><i class="far fa-trash-alt"></i></button>';
 						}else{
 							$btnDelete = '<button class="btn btn-secondary btn-sm" disabled ><i class="far fa-trash-alt"></i></button>';
 						}
@@ -136,7 +136,7 @@
 		}
 
 		public function getUsuario($idpersona){
-			if($_SESSION['permisosMod']['r']){
+			if($_SESSION['permisosMod']['Perm_Vista']){
 				$idusuario = intval($idpersona);
 				if($idusuario > 0)
 				{
@@ -156,7 +156,7 @@
 		public function delUsuario()
 		{
 			if($_POST){
-				if($_SESSION['permisosMod']['d']){
+				if($_SESSION['permisosMod']['Perm_Elim']){
 					$intIdpersona = intval($_POST['idUsuario']);
 					$requestDelete = $this->model->deleteUsuario($intIdpersona);
 					if($requestDelete)

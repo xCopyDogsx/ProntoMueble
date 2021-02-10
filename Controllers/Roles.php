@@ -16,20 +16,20 @@
 
 		public function Roles()
 		{
-			if(empty($_SESSION['permisosMod']['r'])){
+			if(empty($_SESSION['permisosMod']['Perm_Vista'])){
 				header("Location:".base_url().'/dashboard');
 			}
 			$data['page_id'] = 3;
 			$data['page_tag'] = "Roles Usuario";
 			$data['page_name'] = "rol_usuario";
-			$data['page_title'] = "Roles Usuario <small> Tienda Virtual</small>";
+			$data['page_title'] = "Roles Usuario <small> Pronto Mueble</small>";
 			$data['page_functions_js'] = "functions_roles.js";
 			$this->views->getView($this,"roles",$data);
 		}
 
 		public function getRoles()
 		{
-			if($_SESSION['permisosMod']['r']){
+			if($_SESSION['permisosMod']['Perm_Vista']){
 				$btnView = '';
 				$btnEdit = '';
 				$btnDelete = '';
@@ -37,19 +37,19 @@
 
 				for ($i=0; $i < count($arrData); $i++) {
 
-					if($arrData[$i]['status'] == 1)
+					if($arrData[$i]['Rol_Status'] == 1)
 					{
-						$arrData[$i]['status'] = '<span class="badge badge-success">Activo</span>';
+						$arrData[$i]['Rol_Status'] = '<span class="badge badge-success">Activo</span>';
 					}else{
-						$arrData[$i]['status'] = '<span class="badge badge-danger">Inactivo</span>';
+						$arrData[$i]['Rol_Status'] = '<span class="badge badge-danger">Inactivo</span>';
 					}
 
-					if($_SESSION['permisosMod']['u']){
-						$btnView = '<button class="btn btn-secondary btn-sm btnPermisosRol" onClick="fntPermisos('.$arrData[$i]['idrol'].')" title="Permisos"><i class="fas fa-key"></i></button>';
-						$btnEdit = '<button class="btn btn-primary btn-sm btnEditRol" onClick="fntEditRol('.$arrData[$i]['idrol'].')" title="Editar"><i class="fas fa-pencil-alt"></i></button>';
+					if($_SESSION['permisosMod']['Perm_Act']){
+						$btnView = '<button class="btn btn-secondary btn-sm btnPermisosRol" onClick="fntPermisos('.$arrData[$i]['Rol_ID'].')" title="Permisos"><i class="fas fa-key"></i></button>';
+						$btnEdit = '<button class="btn btn-primary btn-sm btnEditRol" onClick="fntEditRol('.$arrData[$i]['Rol_ID'].')" title="Editar"><i class="fas fa-pencil-alt"></i></button>';
 					}
-					if($_SESSION['permisosMod']['d']){
-						$btnDelete = '<button class="btn btn-danger btn-sm btnDelRol" onClick="fntDelRol('.$arrData[$i]['idrol'].')" title="Eliminar"><i class="far fa-trash-alt"></i></button>
+					if($_SESSION['permisosMod']['Perm_Elim']){
+						$btnDelete = '<button class="btn btn-danger btn-sm btnDelRol" onClick="fntDelRol('.$arrData[$i]['Rol_ID'].')" title="Eliminar"><i class="far fa-trash-alt"></i></button>
 					</div>';
 					}
 					$arrData[$i]['options'] = '<div class="text-center">'.$btnView.' '.$btnEdit.' '.$btnDelete.'</div>';
@@ -65,8 +65,8 @@
 			$arrData = $this->model->selectRoles();
 			if(count($arrData) > 0 ){
 				for ($i=0; $i < count($arrData); $i++) { 
-					if($arrData[$i]['status'] == 1 ){
-					$htmlOptions .= '<option value="'.$arrData[$i]['idrol'].'">'.$arrData[$i]['nombrerol'].'</option>';
+					if($arrData[$i]['Rol_Status'] == 1 ){
+					$htmlOptions .= '<option value="'.$arrData[$i]['Rol_ID'].'">'.$arrData[$i]['Rol_Nom'].'</option>';
 					}
 				}
 			}
@@ -76,7 +76,7 @@
 
 		public function getRol(int $idrol)
 		{
-			if($_SESSION['permisosMod']['r']){
+			if($_SESSION['permisosMod']['Perm_Vista']){
 				$intIdrol = intval(strClean($idrol));
 				if($intIdrol > 0)
 				{
@@ -102,13 +102,13 @@
 				if($intIdrol == 0)
 				{
 					//Crear
-					if($_SESSION['permisosMod']['w']){
+					if($_SESSION['permisosMod']['Perm_Crear']){
 						$request_rol = $this->model->insertRol($strRol, $strDescipcion,$intStatus);
 						$option = 1;
 					}
 				}else{
 					//Actualizar
-					if($_SESSION['permisosMod']['u']){
+					if($_SESSION['permisosMod']['Perm_Act']){
 						$request_rol = $this->model->updateRol($intIdrol, $strRol, $strDescipcion, $intStatus);
 						$option = 2;
 					}
@@ -135,7 +135,7 @@
 		public function delRol()
 		{
 			if($_POST){
-				if($_SESSION['permisosMod']['d']){
+				if($_SESSION['permisosMod']['Perm_Elim']){
 					$intIdrol = intval($_POST['idrol']);
 					$requestDelete = $this->model->deleteRol($intIdrol);
 					if($requestDelete == 'ok')

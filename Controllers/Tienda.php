@@ -60,7 +60,7 @@
 				$this->views->getView($this,"producto",$data);
 			}
 		}
-
+		
 		public function addCarrito(){
 			
 			if($_POST){

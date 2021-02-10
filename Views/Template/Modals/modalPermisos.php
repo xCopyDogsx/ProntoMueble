@@ -39,15 +39,15 @@
                                     $uCheck = $permisos['u'] == 1 ? " checked " : "";
                                     $dCheck = $permisos['d'] == 1 ? " checked " : "";
 
-                                    $idmod = $modulos[$i]['idmodulo'];
+                                    $idmod = $modulos[$i]['Mod_ID'];
                             ?>
                           <tr>
                             <td>
                                 <?= $no; ?>
-                                <input type="hidden" name="modulos[<?= $i; ?>][idmodulo]" value="<?= $idmod ?>" required >
+                                <input type="hidden" name="modulos[<?= $i; ?>][Mod_ID]" value="<?= $idmod ?>" required >
                             </td>
                             <td>
-                                <?= $modulos[$i]['titulo']; ?>
+                                <?= $modulos[$i]['Mod_Nom']; ?>
                             </td>
                             <td><div class="toggle-flip">
                                   <label>

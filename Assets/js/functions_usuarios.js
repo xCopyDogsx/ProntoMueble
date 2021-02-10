@@ -14,13 +14,13 @@ document.addEventListener('DOMContentLoaded', function(){
             "dataSrc":""
         },
         "columns":[
-            {"data":"idpersona"},
-            {"data":"nombres"},
-            {"data":"apellidos"},
-            {"data":"email_user"},
-            {"data":"telefono"},
-            {"data":"nombrerol"},
-            {"data":"status"},
+            {"data":"Per_ID"},
+            {"data":"Per_Nom"},
+            {"data":"Per_Ape"},
+            {"data":"Per_Email"},
+            {"data":"Per_Tel"},
+            {"data":"Rol_Nom"},
+            {"data":"Per_Status"},
             {"data":"options"}
         ],
         'dom': 'lBfrtip',
