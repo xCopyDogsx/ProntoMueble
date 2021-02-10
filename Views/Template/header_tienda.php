@@ -60,21 +60,36 @@
 			<div class="top-bar">
 				<div class="content-topbar flex-sb-m h-full container">
 					<div class="left-top-bar">
-						Bienvenido usuario: Carlos Arana
+						<?php if(!empty($_SESSION['login'])){
+					echo "Bienvenido: ".$_SESSION['nombres'];
+						}else{
+							echo "Los mejores en decoración para tu hogar";
+						}
+						?>
 					</div>
 
 					<div class="right-top-bar flex-w h-full">
-						<a href="#" class="flex-c-m trans-04 p-lr-25">
-							Help & FAQs
-						</a>
-
-						<a href="#" class="flex-c-m trans-04 p-lr-25">
-							Mi cuenta
-						</a>
-
-						<a href="#" class="flex-c-m trans-04 p-lr-25">
+						<?php
+					if(!empty($_SESSION['login'])){
+						
+						echo '<a href="'.base_url().'/logout" class="flex-c-m trans-04 p-lr-25">
 							Salir
-						</a>
+						</a>';
+						echo '<a href="#" class="flex-c-m trans-04 p-lr-25">
+							Mi cuenta
+						</a>';
+					}else{
+					
+					echo '<a href="'.base_url().'/login" class="flex-c-m trans-04 p-lr-25">
+							Iniciar sesión
+						</a>';		
+					}
+
+
+						  ?>
+						
+
+						
 					</div>
 				</div>
 			</div>

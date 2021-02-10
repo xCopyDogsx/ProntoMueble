@@ -25,7 +25,7 @@ $('.js-addwish-b2').on('click', function(e){
 $('.js-addwish-b2').each(function(){
 	var nameProduct = $(this).parent().parent().find('.js-name-b2').html();
 	$(this).on('click', function(){
-		swal(nameProduct, "is added to wishlist !", "success");
+		swal(nameProduct, "El producto fue añadido a la lista de deseos", "success");
 
 		$(this).addClass('js-addedwish-b2');
 		$(this).off('click');
@@ -36,7 +36,7 @@ $('.js-addwish-detail').each(function(){
 	var nameProduct = $(this).parent().parent().parent().find('.js-name-detail').html();
 
 	$(this).on('click', function(){
-		swal(nameProduct, "is added to wishlist !", "success");
+		swal(nameProduct, "El producto fue añadido a la lista de deseos", "success");
 
 		$(this).addClass('js-addedwish-detail');
 		$(this).off('click');
@@ -50,7 +50,7 @@ $('.js-addcart-detail').each(function(){
 	$(this).on('click', function(){
 		let id = this.getAttribute('id');
 		let cant = document.querySelector('#cant-product').value;
-
+		
 		if(isNaN(cant) || cant < 1){
 			swal("","La cantidad debe ser mayor o igual que 1" , "error");
 			return;
@@ -74,7 +74,7 @@ $('.js-addcart-detail').each(function(){
 					cants.forEach(element => {
 						element.setAttribute("data-notify",objData.cantCarrito)
 					});
-					swal(nameProduct, "¡Se agrego al corrito!", "success");
+					swal(nameProduct, "¡Se agrego al carrito!", "success");
 	        	}else{
 	        		swal("", objData.msg , "error");
 	        	}

@@ -62,6 +62,7 @@
 		}
 
 		public function addCarrito(){
+			
 			if($_POST){
 				//unset($_SESSION['arrCarrito']);exit;
 				$arrCarrito = array();
@@ -72,11 +73,12 @@
 					$arrInfoProducto = $this->getProductoIDT($idproducto);
 					if(!empty($arrInfoProducto)){
 						$arrProducto = array('idproducto' => $idproducto,
-											'producto' => $arrInfoProducto['nombre'],
+											'producto' => $arrInfoProducto['Prod_Nom'],
 											'cantidad' => $cantidad,
-											'precio' => $arrInfoProducto['precio'],
+											'precio' => $arrInfoProducto['Prod_Precio'],
 											'imagen' => $arrInfoProducto['images'][0]['url_image']
 										);
+						
 						if(isset($_SESSION['arrCarrito'])){
 							$on = true;
 							$arrCarrito = $_SESSION['arrCarrito'];
@@ -85,6 +87,7 @@
 									$arrCarrito[$pr]['cantidad'] += $cantidad;
 									$on = false;
 								}
+							
 							}
 							if($on){
 								array_push($arrCarrito,$arrProducto);
@@ -112,9 +115,11 @@
 				}else{
 					$arrResponse = array("status" => false, "msg" => 'Dato incorrecto.');
 				}
+
 				echo json_encode($arrResponse,JSON_UNESCAPED_UNICODE);
 			}
 			die();
+
 		}
 
 		public function delCarrito(){

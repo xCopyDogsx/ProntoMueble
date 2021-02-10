@@ -170,9 +170,9 @@ $total = $subtotal + COSTOENVIO;
 								<?php 
 									if(count($data['tiposPago']) > 0){ 
 										foreach ($data['tiposPago'] as $tipopago) {
-											if($tipopago['idtipopago'] != 1){
+											if($tipopago['Pag_ID'] != 1){
 								 ?>
-								 	<option value="<?= $tipopago['idtipopago']?>"><?= $tipopago['tipopago']?></option>
+								 	<option value="<?= $tipopago['Pag_Nom']?>"><?= $tipopago['Pag_Nom']?></option>
 								<?php
 											}
 										}

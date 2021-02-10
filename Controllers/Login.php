@@ -15,8 +15,8 @@
 
 		public function login()
 		{
-			$data['page_tag'] = "Login - Tienda Virtual";
-			$data['page_title'] = "Panel administrativo";
+			$data['page_tag'] = "Login - ProntoMueble";
+			$data['page_title'] = "Accede para continuar";
 			$data['page_name'] = "login";
 			$data['page_functions_js'] = "functions_login.js";
 			$this->views->getView($this,"login",$data);
@@ -39,6 +39,8 @@
 						$arrData = $requestUser;
 						if($arrData['Per_Status'] == 1){
 							$_SESSION['idUser'] = $arrData['Per_ID'];
+							$_SESSION['nombres'] = $arrData['Per_Nom']." ".$arrData['Per_Ape'];
+							$_SESSION['rol'] = $arrData['Rol_ID'];
 							$_SESSION['login'] = true;
 
 							$arrData = $this->model->sessionLogin($_SESSION['idUser']);

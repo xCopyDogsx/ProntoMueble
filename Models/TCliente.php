@@ -77,7 +77,6 @@ trait TCliente{
 			foreach ($productos as $producto) {
 				$query_insert  = "INSERT INTO detalle_temp(Per_ID,Prod_ID,Temp_Precio,Temp_Cant,Temp_TransID) 
 								  VALUES(?,?,?,?,?)";
-								  echo dep($arrData);
 	        	$arrData = array($this->intIdUsuario,
 	        					$producto['idproducto'],
 	    						$producto['precio'],
