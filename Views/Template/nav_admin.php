@@ -37,7 +37,7 @@
             </a>
         </li>
         <?php } ?>
-        <?php if(!empty($_SESSION['permisos'][4]['Per_Vista']) || !empty($_SESSION['permisos'][6]['Per_Vista'])){ ?>
+        <?php if(!empty($_SESSION['permisos'][4]['Perm_Vista']) || !empty($_SESSION['permisos'][6]['Perm_Vista'])){ ?>
         <li class="treeview">
             <a class="app-menu__item" href="#" data-toggle="treeview">
                 <i class="app-menu__icon fa fa-archive" aria-hidden="true"></i>

@@ -180,7 +180,7 @@
 			<ul class="topbar-mobile">
 				<li>
 					<div class="left-top-bar">
-						Bienvenido Abel
+						Bienvenido
 					</div>
 				</li>
 
