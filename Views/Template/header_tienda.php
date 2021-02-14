@@ -76,7 +76,7 @@
 						echo '<a href="'.base_url().'/logout" class="flex-c-m trans-04 p-lr-25">
 							Salir
 						</a>';
-						echo '<a href="#" class="flex-c-m trans-04 p-lr-25">
+						echo '<a href="'.base_url().'/usuarios/perfil" class="flex-c-m trans-04 p-lr-25">
 							Mi cuenta
 						</a>';
 					}else{
