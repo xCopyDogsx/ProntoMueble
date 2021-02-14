@@ -149,7 +149,7 @@
 
 		public function selectImages(int $idproducto){
 			$this->intIdProducto = $idproducto;
-			$sql = "SELECT Prod_ID,Img_ID
+			$sql = "SELECT Prod_ID,Img_ID,Img_Nom
 					FROM imagen
 					WHERE Prod_ID = $this->intIdProducto";
 			$request = $this->select_all($sql);

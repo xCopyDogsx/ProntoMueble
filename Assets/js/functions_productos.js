@@ -17,12 +17,12 @@ tableProductos = $('#tableProductos').dataTable( {
         "dataSrc":""
     },
     "columns":[
-        {"data":"idproducto"},
-        {"data":"codigo"},
-        {"data":"nombre"},
-        {"data":"stock"},
-        {"data":"precio"},
-        {"data":"status"},
+        {"data":"Prod_ID"},
+        {"data":"Prod_Cod"},
+        {"data":"Prod_Nom"},
+        {"data":"Prod_Stock"},
+        {"data":"Prod_Precio"},
+        {"data":"Prod_Status"},
         {"data":"options"}
     ],
     "columnDefs": [
@@ -66,7 +66,7 @@ tableProductos = $('#tableProductos').dataTable( {
             }
         }
     ],
-    "resonsieve":"true",
+    "responsive":"true",
     "bDestroy": true,
     "iDisplayLength": 10,
     "order":[[0,"desc"]]  
@@ -105,7 +105,7 @@ window.addEventListener('load', function() {
                     if(objData.status)
                     {
                         swal("", objData.msg ,"success");
-                        document.querySelector("#idProducto").value = objData.idproducto;
+                        document.querySelector("#idProducto").value = objData.Prod_ID;
                         document.querySelector("#containerGallery").classList.remove("notblock");
 
                         if(rowTable == ""){
@@ -121,6 +121,9 @@ window.addEventListener('load', function() {
                             rowTable.cells[5].innerHTML =  htmlStatus;
                             rowTable = ""; 
                         }
+                        $('#modalFormProductos').modal("hide");
+                        formProductos.reset();
+                        swal("", objData.msg ,"success");
                     }else{
                         swal("Error", objData.msg , "error");
                     }
@@ -268,17 +271,17 @@ function fntViewInfo(idProducto){
             {
                 let htmlImage = "";
                 let objProducto = objData.data;
-                let estadoProducto = objProducto.status == 1 ? 
+                let estadoProducto = objProducto.Prod_Status == 1 ? 
                 '<span class="badge badge-success">Activo</span>' : 
                 '<span class="badge badge-danger">Inactivo</span>';
 
-                document.querySelector("#celCodigo").innerHTML = objProducto.codigo;
-                document.querySelector("#celNombre").innerHTML = objProducto.nombre;
-                document.querySelector("#celPrecio").innerHTML = objProducto.precio;
-                document.querySelector("#celStock").innerHTML = objProducto.stock;
+                document.querySelector("#celCodigo").innerHTML = objProducto.Prod_Cod;
+                document.querySelector("#celNombre").innerHTML = objProducto.Prod_Nom;
+                document.querySelector("#celPrecio").innerHTML = objProducto.Prod_Precio;
+                document.querySelector("#celStock").innerHTML = objProducto.Prod_Stock;
                 document.querySelector("#celCategoria").innerHTML = objProducto.categoria;
                 document.querySelector("#celStatus").innerHTML = estadoProducto;
-                document.querySelector("#celDescripcion").innerHTML = objProducto.descripcion;
+                document.querySelector("#celDescripcion").innerHTML = objProducto.Prod_Desc;
 
                 if(objProducto.images.length > 0){
                     let objProductos = objProducto.images;
@@ -315,15 +318,15 @@ function fntEditInfo(element,idProducto){
             {
                 let htmlImage = "";
                 let objProducto = objData.data;
-                document.querySelector("#idProducto").value = objProducto.idproducto;
-                document.querySelector("#txtNombre").value = objProducto.nombre;
-                document.querySelector("#txtDescripcion").value = objProducto.descripcion;
-                document.querySelector("#txtCodigo").value = objProducto.codigo;
-                document.querySelector("#txtPrecio").value = objProducto.precio;
-                document.querySelector("#txtStock").value = objProducto.stock;
-                document.querySelector("#listCategoria").value = objProducto.categoriaid;
-                document.querySelector("#listStatus").value = objProducto.status;
-                tinymce.activeEditor.setContent(objProducto.descripcion); 
+                document.querySelector("#idProducto").value = objProducto.Prod_ID;
+                document.querySelector("#txtNombre").value = objProducto.Prod_Nom;
+                document.querySelector("#txtDescripcion").value = objProducto.Prod_Desc;
+                document.querySelector("#txtCodigo").value = objProducto.Prod_Cod;
+                document.querySelector("#txtPrecio").value = objProducto.Prod_Precio;
+                document.querySelector("#txtStock").value = objProducto.Prod_Stock;
+                document.querySelector("#listCategoria").value = objProducto.Cat_Nom;
+                document.querySelector("#listStatus").value = objProducto.Prod_Status;
+                tinymce.activeEditor.setContent(objProducto.Prod_Desc); 
                 $('#listCategoria').selectpicker('render');
                 $('#listStatus').selectpicker('render');
                 fntBarcode();
@@ -336,7 +339,7 @@ function fntEditInfo(element,idProducto){
                             <div class="prevImage">
                             <img src="${objProductos[p].url_image}"></img>
                             </div>
-                            <button type="button" class="btnDeleteImage" onclick="fntDelItem('#div${key}')" imgname="${objProductos[p].img}">
+                            <button type="button" class="btnDeleteImage" onclick="fntDelItem('#div${key}')" imgname="${objProductos[p].Img_Nom}">
                             <i class="fas fa-trash-alt"></i></button></div>`;
                     }
                 }

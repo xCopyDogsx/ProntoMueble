@@ -34,22 +34,22 @@
 					$btnEdit = '';
 					$btnDelete = '';
 
-					if($arrData[$i]['status'] == 1)
+					if($arrData[$i]['Prod_Status'] == 1)
 					{
-						$arrData[$i]['status'] = '<span class="badge badge-success">Activo</span>';
+						$arrData[$i]['Prod_Status'] = '<span class="badge badge-success">Activo</span>';
 					}else{
-						$arrData[$i]['status'] = '<span class="badge badge-danger">Inactivo</span>';
+						$arrData[$i]['Prod_Status'] = '<span class="badge badge-danger">Inactivo</span>';
 					}
 
-					$arrData[$i]['precio'] = SMONEY.' '.formatMoney($arrData[$i]['precio']);
+					$arrData[$i]['Prod_Precio'] = SMONEY.' '.formatMoney($arrData[$i]['Prod_Precio']);
 					if($_SESSION['permisosMod']['Perm_Vista']){
-						$btnView = '<button class="btn btn-info btn-sm" onClick="fntViewInfo('.$arrData[$i]['idproducto'].')" title="Ver producto"><i class="far fa-eye"></i></button>';
+						$btnView = '<button class="btn btn-info btn-sm" onClick="fntViewInfo('.$arrData[$i]['Prod_ID'].')" title="Ver producto"><i class="far fa-eye"></i></button>';
 					}
 					if($_SESSION['permisosMod']['Perm_Act']){
-						$btnEdit = '<button class="btn btn-primary  btn-sm" onClick="fntEditInfo(this,'.$arrData[$i]['idproducto'].')" title="Editar producto"><i class="fas fa-pencil-alt"></i></button>';
+						$btnEdit = '<button class="btn btn-primary  btn-sm" onClick="fntEditInfo(this,'.$arrData[$i]['Prod_ID'].')" title="Editar producto"><i class="fas fa-pencil-alt"></i></button>';
 					}
 					if($_SESSION['permisosMod']['Perm_Elim']){	
-						$btnDelete = '<button class="btn btn-danger btn-sm" onClick="fntDelInfo('.$arrData[$i]['idproducto'].')" title="Eliminar producto"><i class="far fa-trash-alt"></i></button>';
+						$btnDelete = '<button class="btn btn-danger btn-sm" onClick="fntDelInfo('.$arrData[$i]['Prod_ID'].')" title="Eliminar producto"><i class="far fa-trash-alt"></i></button>';
 					}
 					$arrData[$i]['options'] = '<div class="text-center">'.$btnView.' '.$btnEdit.' '.$btnDelete.'</div>';
 				}
@@ -134,7 +134,7 @@
 						$arrImg = $this->model->selectImages($idproducto);
 						if(count($arrImg) > 0){
 							for ($i=0; $i < count($arrImg); $i++) { 
-								$arrImg[$i]['url_image'] = media().'/images/uploads/'.$arrImg[$i]['img'];
+								$arrImg[$i]['url_image'] = media().'/images/uploads/'.$arrImg[$i]['Img_Nom'];
 							}
 						}
 						$arrData['images'] = $arrImg;

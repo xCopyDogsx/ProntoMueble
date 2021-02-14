@@ -14,10 +14,10 @@ document.addEventListener('DOMContentLoaded', function(){
             "dataSrc":""
         },
         "columns":[
-            {"data":"idcategoria"},
-            {"data":"nombre"},
-            {"data":"descripcion"},
-            {"data":"status"},
+            {"data":"Cat_ID"},
+            {"data":"Cat_Nom"},
+            {"data":"Cat_Des"},
+            {"data":"Cat_Status"},
             {"data":"options"}
         ],
         'dom': 'lBfrtip',
@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function(){
                 "className": "btn btn-info"
             }
         ],
-        "resonsieve":"true",
+        "responsive":"true",
         "bDestroy": true,
         "iDisplayLength": 10,
         "order":[[0,"desc"]]  
@@ -156,12 +156,12 @@ function fntViewInfo(idcategoria){
             let objData = JSON.parse(request.responseText);
             if(objData.status)
             {
-                let estado = objData.data.status == 1 ? 
+                let estado = objData.data.Cat_Status == 1 ? 
                 '<span class="badge badge-success">Activo</span>' : 
                 '<span class="badge badge-danger">Inactivo</span>';
-                document.querySelector("#celId").innerHTML = objData.data.idcategoria;
-                document.querySelector("#celNombre").innerHTML = objData.data.nombre;
-                document.querySelector("#celDescripcion").innerHTML = objData.data.descripcion;
+                document.querySelector("#celId").innerHTML = objData.data.Cat_ID;
+                document.querySelector("#celNombre").innerHTML = objData.data.Cat_Nom;
+                document.querySelector("#celDescripcion").innerHTML = objData.data.Cat_Des;
                 document.querySelector("#celEstado").innerHTML = estado;
                 document.querySelector("#imgCategoria").innerHTML = '<img src="'+objData.data.url_portada+'"></img>';
                 $('#modalViewCategoria').modal('show');
@@ -187,13 +187,13 @@ function fntEditInfo(element,idcategoria){
             let objData = JSON.parse(request.responseText);
             if(objData.status)
             {
-                document.querySelector("#idCategoria").value = objData.data.idcategoria;
-                document.querySelector("#txtNombre").value = objData.data.nombre;
-                document.querySelector("#txtDescripcion").value = objData.data.descripcion;
-                document.querySelector('#foto_actual').value = objData.data.portada;
+                document.querySelector("#idCategoria").value = objData.data.Cat_ID;
+                document.querySelector("#txtNombre").value = objData.data.Cat_Nom;
+                document.querySelector("#txtDescripcion").value = objData.data.Cat_Des;
+                document.querySelector('#foto_actual').value = objData.data.Cat_Port;
                 document.querySelector("#foto_remove").value= 0;
 
-                if(objData.data.status == 1){
+                if(objData.data.Cat_Status == 1){
                     document.querySelector("#listStatus").value = 1;
                 }else{
                     document.querySelector("#listStatus").value = 2;

@@ -15,7 +15,7 @@
 
 		public function Categorias()
 		{
-			if(empty($_SESSION['permisosMod']['r'])){
+			if(empty($_SESSION['permisosMod']['Perm_Vista'])){
 				header("Location:".base_url().'/dashboard');
 			}
 			$data['page_tag'] = "Categorias";
@@ -53,13 +53,13 @@
 					if($intIdcategoria == 0)
 					{
 						//Crear
-						if($_SESSION['permisosMod']['w']){
+						if($_SESSION['permisosMod']['Perm_Crear']){
 							$request_cateria = $this->model->inserCategoria($strCategoria, $strDescipcion,$imgPortada,$ruta,$intStatus);
 							$option = 1;
 						}
 					}else{
 						//Actualizar
-						if($_SESSION['permisosMod']['u']){
+						if($_SESSION['permisosMod']['Perm_Act']){
 							if($nombre_foto == ''){
 								if($_POST['foto_actual'] != 'portada_categoria.png' && $_POST['foto_remove'] == 0 ){
 									$imgPortada = $_POST['foto_actual'];
@@ -97,28 +97,28 @@
 
 		public function getCategorias()
 		{
-			if($_SESSION['permisosMod']['r']){
+			if($_SESSION['permisosMod']['Perm_Vista']){
 				$arrData = $this->model->selectCategorias();
 				for ($i=0; $i < count($arrData); $i++) {
 					$btnView = '';
 					$btnEdit = '';
 					$btnDelete = '';
 
-					if($arrData[$i]['status'] == 1)
+					if($arrData[$i]['Cat_Status'] == 1)
 					{
-						$arrData[$i]['status'] = '<span class="badge badge-success">Activo</span>';
+						$arrData[$i]['Cat_Status'] = '<span class="badge badge-success">Activo</span>';
 					}else{
-						$arrData[$i]['status'] = '<span class="badge badge-danger">Inactivo</span>';
+						$arrData[$i]['Cat_Status'] = '<span class="badge badge-danger">Inactivo</span>';
 					}
 
-					if($_SESSION['permisosMod']['r']){
-						$btnView = '<button class="btn btn-info btn-sm" onClick="fntViewInfo('.$arrData[$i]['idcategoria'].')" title="Ver categoría"><i class="far fa-eye"></i></button>';
+					if($_SESSION['permisosMod']['Perm_Vista']){
+						$btnView = '<button class="btn btn-info btn-sm" onClick="fntViewInfo('.$arrData[$i]['Cat_ID'].')" title="Ver categoría"><i class="far fa-eye"></i></button>';
 					}
-					if($_SESSION['permisosMod']['u']){
-						$btnEdit = '<button class="btn btn-primary  btn-sm" onClick="fntEditInfo(this,'.$arrData[$i]['idcategoria'].')" title="Editar categoría"><i class="fas fa-pencil-alt"></i></button>';
+					if($_SESSION['permisosMod']['Perm_Act']){
+						$btnEdit = '<button class="btn btn-primary  btn-sm" onClick="fntEditInfo(this,'.$arrData[$i]['Cat_ID'].')" title="Editar categoría"><i class="fas fa-pencil-alt"></i></button>';
 					}
-					if($_SESSION['permisosMod']['d']){	
-						$btnDelete = '<button class="btn btn-danger btn-sm" onClick="fntDelInfo('.$arrData[$i]['idcategoria'].')" title="Eliminar categoría"><i class="far fa-trash-alt"></i></button>';
+					if($_SESSION['permisosMod']['Perm_Elim']){	
+						$btnDelete = '<button class="btn btn-danger btn-sm" onClick="fntDelInfo('.$arrData[$i]['Cat_ID'].')" title="Eliminar categoría"><i class="far fa-trash-alt"></i></button>';
 					}
 					$arrData[$i]['options'] = '<div class="text-center">'.$btnView.' '.$btnEdit.' '.$btnDelete.'</div>';
 				}
@@ -129,7 +129,7 @@
 
 		public function getCategoria($idcategoria)
 		{
-			if($_SESSION['permisosMod']['r']){
+			if($_SESSION['permisosMod']['Perm_Vista']){
 				$intIdcategoria = intval($idcategoria);
 				if($intIdcategoria > 0)
 				{
@@ -138,7 +138,7 @@
 					{
 						$arrResponse = array('status' => false, 'msg' => 'Datos no encontrados.');
 					}else{
-						$arrData['url_portada'] = media().'/images/uploads/'.$arrData['portada'];
+						$arrData['url_portada'] = media().'/images/uploads/'.$arrData['Cat_Port'];
 						$arrResponse = array('status' => true, 'data' => $arrData);
 					}
 					echo json_encode($arrResponse,JSON_UNESCAPED_UNICODE);
@@ -150,7 +150,7 @@
 		public function delCategoria()
 		{
 			if($_POST){
-				if($_SESSION['permisosMod']['d']){
+				if($_SESSION['permisosMod']['Perm_Elim']){
 					$intIdcategoria = intval($_POST['idCategoria']);
 					$requestDelete = $this->model->deleteCategoria($intIdcategoria);
 					if($requestDelete == 'ok')
@@ -172,8 +172,8 @@
 			$arrData = $this->model->selectCategorias();
 			if(count($arrData) > 0 ){
 				for ($i=0; $i < count($arrData); $i++) { 
-					if($arrData[$i]['status'] == 1 ){
-					$htmlOptions .= '<option value="'.$arrData[$i]['idcategoria'].'">'.$arrData[$i]['nombre'].'</option>';
+					if($arrData[$i]['Cat_Status'] == 1 ){
+					$htmlOptions .= '<option value="'.$arrData[$i]['Cat_ID'].'">'.$arrData[$i]['Cat_Nom'].'</option>';
 					}
 				}
 			}
