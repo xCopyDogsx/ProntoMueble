@@ -7,8 +7,55 @@ foreach ($_SESSION['arrCarrito'] as $producto) {
 	$subtotal += $producto['precio'] * $producto['cantidad'];
 }
 $total = $subtotal + COSTOENVIO;
-
+$totalUSD = $total*0.00028;
 ?>
+ <script
+    src="https://www.paypal.com/sdk/js?client-id=<?=ID_CLIENTE;?>&currency=<?= CURRENCY; ?>"> // Required. Replace SB_CLIENT_ID with your sandbox client ID.
+  </script>
+  <script>
+  paypal.Buttons({
+    createOrder: function(data, actions) {
+      return actions.order.create({
+        purchase_units: [{
+          amount: {
+            value: <?= $totalUSD; ?>
+          },
+         description: "Compra de articulos en <?= NOMBRE_EMPESA; ?> por <?= SMONEY.$total; ?>"
+        }]
+      });
+    },
+     onApprove: function(data, actions) {
+      return actions.order.capture().then(function(details) {
+        let base_url = "<? base_url(); ?>";
+        let dir = document.querySelector("#txtDireccion").value;
+        let ciudad = document.querySelector("#txtCiudad").value;
+        let inttipopago = 1;
+        let request = (window.XMLHttpRequest)?
+        		   new XMLHttpRequest():
+        		   new ActiveXObject('Microsoft.XMLHTTP');
+        let ajaxUrl = base_url+'/Tienda/procesarVenta';
+        let formData = new FormData();
+        formData.append('direccion',dir);
+        formData.append('ciudad',ciudad);
+        formData.append('inttipopago',inttipopago);
+        formData.append('datapay',JSON.stringify(details));
+        request.open("POST",ajaxUrl,true);
+        request.send(formData);
+        request.onreadystatechange = function(){
+        	if(request.readyState !=4 ) return;
+        	if(request.status == 200 ){
+        		let objData = JSON.parse(request.responseText);
+        		if(objData.status){
+        			window.location = base_url+"/tienda/confirmarpedido/";
+        		}else{
+        			swal("",objData.msg,"error");
+        		}
+        	}
+        }
+      });
+    }
+  }).render('#paypal-btn-container');
+</script>
  <br><br><br>
 <hr>
 	<!-- breadcrumb -->
@@ -147,6 +194,7 @@ $total = $subtotal + COSTOENVIO;
 <?php 
 	if(isset($_SESSION['login'])){
 ?>
+					<div id="divMetodoPago" class="notblock">
 					<h4 class="mtext-109 cl2 p-b-30">
 						Método de pago
 					</h4>
@@ -180,15 +228,20 @@ $total = $subtotal + COSTOENVIO;
 								</select>
 								<div class="dropDownSelect2"></div>
 							</div>
+						<button type="submit" id="btnComprar" class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">Pagar</button>
 						</div>
-						<div id="msgpaypal">
-							<p>Para completar la transacción, te enviaremos a los servidores seguros de PayPal.</p>
+						<div id="divpaypal">
+						<div>
+						<p>Para completar la transacción, te enviaremos a los servidores seguros de PayPal.</p>
 						</div>
+						<div id="paypal-btn-container"></div>
+						</div>
+					</div>
 					</div>
 					<hr>
 					<br>
 					
-					<button type="submit" id="btnComprar" class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">Pagar</button>
+					
 <?php } ?>
 				</div>
 			</div>

@@ -22,7 +22,7 @@
 		{
 			if(empty($_SESSION['arrCarrito'])){ 
 				header("Location: ".base_url());
-				die();
+				die();	
 			}
 			if(isset($_SESSION['login'])){
 				$this->setDetalleTemp();

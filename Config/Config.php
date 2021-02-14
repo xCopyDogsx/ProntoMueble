@@ -18,8 +18,9 @@
 	const SPM = ".";
 
 	//Simbolo de moneda
-	const SMONEY = '$';
-	
+	const SMONEY = "$";
+	const CURRENCY = "USD";
+	const ID_CLIENTE="AbhtFoCdzF7_RkgYoOh1sn74yc6EH-IdaNXKut2NSb0tTgIx_rhWGAueQM0rTK5QdH1Ntyfj_4shKZS9";
 	//Datos envio de correo
 	const NOMBRE_REMITENTE = "ProntoMueble";
 	const EMAIL_REMITENTE = "admin@prontomueble.store";
