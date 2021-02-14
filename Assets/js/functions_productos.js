@@ -43,7 +43,7 @@ tableProductos = $('#tableProductos').dataTable( {
         },{
             "extend": "excelHtml5",
             "text": "<i class='fas fa-file-excel'></i> Excel",
-            "titleAttr":"Esportar a Excel",
+            "titleAttr":"Exportar a Excel",
             "className": "btn btn-success",
             "exportOptions": { 
                 "columns": [ 0, 1, 2, 3, 4, 5] 
@@ -51,7 +51,7 @@ tableProductos = $('#tableProductos').dataTable( {
         },{
             "extend": "pdfHtml5",
             "text": "<i class='fas fa-file-pdf'></i> PDF",
-            "titleAttr":"Esportar a PDF",
+            "titleAttr":"Exportar a PDF",
             "className": "btn btn-danger",
             "exportOptions": { 
                 "columns": [ 0, 1, 2, 3, 4, 5] 
@@ -59,7 +59,7 @@ tableProductos = $('#tableProductos').dataTable( {
         },{
             "extend": "csvHtml5",
             "text": "<i class='fas fa-file-csv'></i> CSV",
-            "titleAttr":"Esportar a CSV",
+            "titleAttr":"Exportar a CSV",
             "className": "btn btn-info",
             "exportOptions": { 
                 "columns": [ 0, 1, 2, 3, 4, 5] 

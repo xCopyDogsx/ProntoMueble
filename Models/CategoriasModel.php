@@ -23,12 +23,12 @@
 			$this->strRuta = $ruta;
 			$this->intStatus = $status;
 
-			$sql = "SELECT * FROM prod_cat WHERE Cat_nombre = '{$this->strCategoria}' ";
+			$sql = "SELECT * FROM prod_cat WHERE Cat_Nom = '{$this->strCategoria}' ";
 			$request = $this->select_all($sql);
 
 			if(empty($request))
 			{
-				$query_insert  = "INSERT INTO prod_cat(Cat_ID,Cat_Desc,Cat_Por,Cat_Ruta,Cat_Status) VALUES(?,?,?,?,?)";
+				$query_insert  = "INSERT INTO prod_cat(Cat_Nom,Cat_Des,Cat_Port,Cat_Ruta,Cat_Status) VALUES(?,?,?,?,?)";
 	        	$arrData = array($this->strCategoria, 
 								 $this->strDescripcion, 
 								 $this->strPortada,
@@ -66,12 +66,12 @@
 			$this->strRuta = $ruta;
 			$this->intStatus = $status;
 
-			$sql = "SELECT * FROM prod_cat WHERE nombre = '{$this->strCategoria}' AND Cat_ID != $this->intIdcategoria";
+			$sql = "SELECT * FROM prod_cat WHERE Cat_Nom = '{$this->strCategoria}' AND Cat_ID != $this->intIdcategoria";
 			$request = $this->select_all($sql);
 
 			if(empty($request))
 			{
-				$sql = "UPDATE prod_cat SET Cat_Nom = ?, Cat_Desc = ?, Cat_Port = ?, Cat_Ruta = ?, Cat_Status = ? WHERE Cat_ID = $this->intIdcategoria ";
+				$sql = "UPDATE prod_cat SET Cat_Nom = ?, Cat_Des = ?, Cat_Port = ?, Cat_Ruta = ?, Cat_Status = ? WHERE Cat_ID = $this->intIdcategoria ";
 				$arrData = array($this->strCategoria, 
 								 $this->strDescripcion, 
 								 $this->strPortada,
