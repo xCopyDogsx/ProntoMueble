@@ -43,7 +43,72 @@ trait TCliente{
 		}
         return $return;
 	}
-
+	public function insertPedido(string $idtransaccionpaypal = NULL, string $datospaypal = NULL, int $personaid, float $costo_envio, string $monto, int $tipopagoid, string $direccionenvio, string $status){
+		$this->con = new Mysql();
+		$query_insert  = "INSERT INTO pedido(Ped_IDPayPal,Ped_DatPayPal,Per_ID,Ped_CostEnv,Ped_Total,Pag_ID,Ped_Dest,Ped_Status) 
+							  VALUES(?,?,?,?,?,?,?,?)";
+		$arrData = array($idtransaccionpaypal,
+    						$datospaypal,
+    						$personaid,
+    						$costo_envio,
+    						$monto,
+    						$tipopagoid,
+    						$direccionenvio,
+    						$status
+    					);
+		$request_insert = $this->con->insert($query_insert,$arrData);
+	    $return = $request_insert;
+	    return $return;
+	}
+	public function insertDetalle(int $idpedido, int $productoid, float $precio, int $cantidad){
+		$this->con = new Mysql();
+		$query_insert  = "INSERT INTO det_ped(Ped_ID,Prod_ID,Det_Precio,Det_Cant) 
+							  VALUES(?,?,?,?)";
+		$arrData = array($idpedido,
+    					$productoid,
+						$precio,
+						$cantidad
+					);
+		$request_insert = $this->con->insert($query_insert,$arrData);
+	    $return = $request_insert;
+	    return $return;
+	}
+	public function getPedido(int $idpedido){
+		$this->con = new Mysql();
+		$request = array();
+		$sql = "SELECT p.Ped_ID,
+							p.Ped_RefCobro,
+							p.Ped_IDPayPal,
+							p.Per_ID,
+							p.Ped_FechPed,
+							p.Ped_CostEnv,
+							p.Ped_Total,
+							p.Pag_ID,
+							t.Pag_ID,
+							p.Ped_Dest,
+							p.Ped_Status
+					FROM pedido as p
+					INNER JOIN tipo_pago t
+					ON p.Pag_ID = t.Pag_ID
+					WHERE p.Ped_ID =  $idpedido";
+		$requestPedido = $this->con->select($sql);
+		if(count($requestPedido) > 0){
+			$sql_detalle = "SELECT p.Prod_ID,
+											p.Prod_Nom as producto,
+											d.Det_Precio,
+											d.Det_Cant
+									FROM det_ped d
+									INNER JOIN producto p
+									ON d.Prod_ID = p.Prod_ID
+									WHERE d.Ped_ID = $idpedido
+									";
+			$requestProductos = $this->con->select_all($sql_detalle);
+			$request = array('orden' => $requestPedido,
+							'detalle' => $requestProductos
+							);
+		}
+		return $request;
+	}	
 	public function insertDetalleTemp(array $pedido){
 		$this->intIdUsuario = $pedido['idcliente'];
 		$this->intIdTransaccion = $pedido['idtransaccion'];

@@ -26,7 +26,7 @@ $totalUSD = $total*0.00028;
     },
      onApprove: function(data, actions) {
       return actions.order.capture().then(function(details) {
-        let base_url = "<? base_url(); ?>";
+        let base_url = "<?= base_url(); ?>";
         let dir = document.querySelector("#txtDireccion").value;
         let ciudad = document.querySelector("#txtCiudad").value;
         let inttipopago = 1;

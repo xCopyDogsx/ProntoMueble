@@ -26,7 +26,9 @@
 	const EMAIL_REMITENTE = "admin@prontomueble.store";
 	const NOMBRE_EMPESA = "ProntoMueble";
 	const WEB_EMPRESA = "www.prontomueble.store";
-
+	const TELEMPRESA = "123456";
+	const EMAIL_EMPRESA = "admin@prontomueble.store";
+	const EMAIL_PEDIDOS = "admin@prontomueble.store";	
 	const CAT_SLIDER = "1,2,3";
 	const CAT_BANNER = "4,5,6";
 
