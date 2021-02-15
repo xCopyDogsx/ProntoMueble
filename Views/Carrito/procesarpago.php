@@ -7,10 +7,11 @@ foreach ($_SESSION['arrCarrito'] as $producto) {
 	$subtotal += $producto['precio'] * $producto['cantidad'];
 }
 $total = $subtotal + COSTOENVIO;
-$totalUSD = $total*0.00028;
+$totalUSD = $total*.00028;
+$totalUSD = round($totalUSD);
 ?>
  <script
-    src="https://www.paypal.com/sdk/js?client-id=<?=ID_CLIENTE;?>&currency=<?= CURRENCY; ?>"> // Required. Replace SB_CLIENT_ID with your sandbox client ID.
+    src="https://www.paypal.com/sdk/js?client-id=<?=ID_CLIENTE;?>"> // Required. Replace SB_CLIENT_ID with your sandbox client ID.
   </script>
   <script>
   paypal.Buttons({
@@ -53,7 +54,9 @@ $totalUSD = $total*0.00028;
         	}
         }
       });
-    }
+    },onCancel: function (data) {
+    swal("Cancelación","Transacción cancelada","error");
+  	}
   }).render('#paypal-btn-container');
 </script>
  <br><br><br>
