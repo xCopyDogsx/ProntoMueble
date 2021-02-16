@@ -281,7 +281,7 @@
 
 							$infoOrden = $this->getPedido($request_pedido);
 							$dataEmailOrden = array('asunto' => "Se ha creado la orden No.".$request_pedido,
-													'email' => $_SESSION['userData']['email_user'], 
+													'email' => $_SESSION['userData']['Per_Email'], 
 													'emailCopia' => EMAIL_PEDIDOS,
 													'pedido' => $infoOrden );
 							//sendEmail($dataEmailOrden,"email_notificacion_orden");

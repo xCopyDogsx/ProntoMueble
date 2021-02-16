@@ -21,6 +21,8 @@
 	const SMONEY = "$";
 	const CURRENCY = "USD";
 	const ID_CLIENTE="AbhtFoCdzF7_RkgYoOh1sn74yc6EH-IdaNXKut2NSb0tTgIx_rhWGAueQM0rTK5QdH1Ntyfj_4shKZS9";
+	const URL_PAYPAL="https://api-m.sandbox.paypal.com";
+	const SECRET = "EKUDqlPEQM3OSxX0bslhhozpiI9lSflOYSnlK9h9LllF9BcncH0t4FUN0RKlWX1efTbko4aECf18hDrx";
 	//Datos envio de correo
 	const NOMBRE_REMITENTE = "ProntoMueble";
 	const EMAIL_REMITENTE = "admin@prontomueble.store";
