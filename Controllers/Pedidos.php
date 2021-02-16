@@ -72,10 +72,20 @@ class Pedidos extends Controllers{
 			if(empty($_SESSION['permisosMod']['Perm_Vista'])){
 				header("Location:".base_url().'/dashboard');
 			}
+			$idpersona="";
+			if($_SESSION['userData']['Rol_Nom']=="Cliente"){
+					$idpersona =$_SESSION['userData']['Per_ID'];
+				}
 			$data['page_tag'] = "Pedido - ProntoMueble";
 			$data['page_title'] = "PEDIDO <small>Pronto Mueble</small>";
 			$data['page_name'] = "pedido";
-			$this->views->getView($this,"orden",$data);
+			$data['arrPedido'] = $this->model->selectPedido($idpedido,$idpersona);
+			if(!empty($data['arrPedido'])){
+				$this->views->getView($this,"orden",$data);
+			}else{
+				$this->views->getView($this,"ordenerror",$data);
+			}
+			
 		}
 }
 
