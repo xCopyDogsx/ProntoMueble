@@ -6,7 +6,7 @@
 			parent::__construct();
 		}
 
-		public function getPermisosRol(int $idrol)
+		public function getPermisosRol($idrol)
 		{
 			$rolid = intval($idrol);
 			if($rolid > 0)
@@ -51,11 +51,11 @@
 
 				$this->model->deletePermisos($intIdrol);
 				foreach ($modulos as $modulo) {
-					$idModulo = $modulo['idmodulo'];
-					$r = empty($modulo['r']) ? 0 : 1;
-					$w = empty($modulo['w']) ? 0 : 1;
-					$u = empty($modulo['u']) ? 0 : 1;
-					$d = empty($modulo['d']) ? 0 : 1;
+					$idModulo = $modulo['Mod_ID'];
+					$r = empty($modulo['Perm_Vista']) ? 0 : 1;
+					$w = empty($modulo['Perm_Crear']) ? 0 : 1;
+					$u = empty($modulo['Perm_Act']) ? 0 : 1;
+					$d = empty($modulo['Perm_Elim']) ? 0 : 1;
 					$requestPermiso = $this->model->insertPermisos($intIdrol, $idModulo, $r, $w, $u, $d);
 				}
 				if($requestPermiso > 0)

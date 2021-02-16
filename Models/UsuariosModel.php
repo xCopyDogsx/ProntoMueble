@@ -39,7 +39,7 @@
 
 			if(empty($request))
 			{
-				$query_insert  = "INSERT INTO persona(Per_Doc,Per_Nom,Per_Ape,Per-Tel,Per_Email,Per_Passw,Rol_ID,Rol_Status) 
+				$query_insert  = "INSERT INTO persona(Per_Doc,Per_Nom,Per_Ape,Per_Tel,Per_Email,Per_Passw,Rol_ID,Per_Status) 
 								  VALUES(?,?,?,?,?,?,?,?)";
 	        	$arrData = array($this->strIdentificacion,
         						$this->strNombre,

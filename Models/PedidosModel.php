@@ -9,7 +9,11 @@
 			
 		}
 
-		public function selectPedidos(){
+		public function selectPedidos($idpersona = NULL){
+			$where = "";
+			if($idpersona!= NULL){
+				$where = "WHERE p.Per_ID = ".$idpersona;
+			}
 			$sql = "SELECT p.Ped_ID,
 						p.Ped_RefCobro,
 						p.Ped_IDPayPal,
@@ -20,7 +24,9 @@
 						p.Ped_Status
 					FROM pedido p
 					INNER JOIN tipo_pago tp 
-					ON p.Pag_ID=tp.Pag_ID";
+					ON p.Pag_ID=tp.Pag_ID $where ";
+			$request = $this->select_all($sql);
+			return $request;
 		}	
 	}
  ?>

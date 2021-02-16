@@ -157,15 +157,17 @@ function fntDelRol(idrol){
                     {
                         swal("Eliminar!", objData.msg , "success");
                         tableRoles.api().ajax.reload(function(){
-                            fntEditRol();
-                            fntDelRol();
-                            fntPermisos();
+                            //fntEditRol();
+                            //fntDelRol();
+                            //fntPermisos();
                         });
                     }else{
                         swal("Atención!", objData.msg , "error");
                     }
                 }
             }
+        }else{
+            swal("Acción","Acción cancelada por el usuario", "error");
         }
 
     });

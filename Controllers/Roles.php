@@ -74,7 +74,7 @@
 			die();		
 		}
 
-		public function getRol(int $idrol)
+		public function getRol($idrol)
 		{
 			if($_SESSION['permisosMod']['Perm_Vista']){
 				$intIdrol = intval(strClean($idrol));

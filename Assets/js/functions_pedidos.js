@@ -10,7 +10,7 @@ tablePedidos = $('#tablePedidos').dataTable( {
     },
     "columns":[
         {"data":"Ped_ID"},
-        {"data":"Ped_RefCobro"},
+        {"data":"transaccion"},
         {"data":"fecha"},
         {"data":"Ped_Total"},
         {"data":"Pag_ID"},
@@ -61,5 +61,5 @@ tablePedidos = $('#tablePedidos').dataTable( {
     "responsive":"true",
     "bDestroy": true,
     "iDisplayLength": 10,
-    "order":[[0,"desc"]]  
+    "order":[[0,"asc"]]  
 });
