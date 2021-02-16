@@ -67,6 +67,16 @@ class Pedidos extends Controllers{
 			}
 			die();
 		}
+
+		public function orden($idpedido){
+			if(empty($_SESSION['permisosMod']['Perm_Vista'])){
+				header("Location:".base_url().'/dashboard');
+			}
+			$data['page_tag'] = "Pedido - ProntoMueble";
+			$data['page_title'] = "PEDIDO <small>Pronto Mueble</small>";
+			$data['page_name'] = "pedido";
+			$this->views->getView($this,"orden",$data);
+		}
 }
 
  ?>
