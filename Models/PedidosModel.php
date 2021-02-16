@@ -45,6 +45,7 @@
 							p.Ped_Total,
 							p.Pag_ID,
 							t.Pag_ID,
+							t.Pag_Nom,
 							p.Ped_Dest,
 							p.Ped_Status
 					FROM pedido as p

@@ -27,8 +27,10 @@
 	const NOMBRE_REMITENTE = "ProntoMueble";
 	const EMAIL_REMITENTE = "admin@prontomueble.store";
 	const NOMBRE_EMPESA = "ProntoMueble";
+	const NOMBRE_EMPRESA = "ProntoMueble";
 	const WEB_EMPRESA = "www.prontomueble.store";
 	const TELEMPRESA = "123456";
+	const DIRECCION = "Calle 13#17-54 Bogotá,Colombia";
 	const EMAIL_EMPRESA = "admin@prontomueble.store";
 	const EMAIL_PEDIDOS = "admin@prontomueble.store";	
 	const CAT_SLIDER = "1,2,3";
