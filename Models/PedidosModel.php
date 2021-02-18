@@ -87,5 +87,56 @@
 			}
 			return $objTransaccion;
 		}	
+	
+		public function reembolso($idtransaccion,$observacion){
+			$response=false;
+			$sql="SELECT Ped_ID,Ped_DatPayPal FROM pedido WHERE Ped_IDPayPal='{$idtransaccion}'	";
+			$requestData=$this->select($sql);
+			if(!empty($requestData)){
+				$objData = json_decode($requestData['Ped_DatPayPal']);
+				$urlReembolso = $objData->purchase_units[0]->payments->captures[0]->links[1]->href;
+				$objTransaccion = CurlConnectionPost($urlReembolso,"application/json",getToken());
+				if(isset($objTransaccion->status) and $objTransaccion->status=="COMPLETED"){
+					$idpedido=$requestData['Ped_ID'];
+					$idtrans=$objData->id;
+					$status=$objTransaccion->status;
+					$jsonData=json_encode($objTransaccion);
+					$observacion=$observacion;
+					$query_insert="INSERT INTO reembolsos(Ped_ID.
+											Rem_TransID,
+											Rem_Data,
+											Rem_Obs,
+											Rem_Status)
+									VALUES (?,?,?,?,?)";
+					$arrData=array($idpedido,
+								   $idtrans,
+								   $jsonData,
+								   $observacion,
+								   $status);
+					$request_insert=$this->insert($query_insert,$arrData);
+					if($request_insert>0){
+						
+						$updatePedido = "UPDATE pedido SET Ped_Status=? WHERE Ped_ID=$idpedido";
+						$arrPedido=array("Reembolsado");
+						$request=$this->update($updatePedido,$arrPedido);
+						$response=true;
+					}
+				}
+				return $response;
+			}
+		}
+		public function deletePedido($idpedido){
+		$sql1="SELECT Pag_ID FROM pedido WHERE Ped_ID = $idpedido";
+		$ejecutar=$this->select($sql1);
+		if($ejecutar['Pag_ID']==1){
+			$request = "";
+		}else{
+		$sql = "DELETE FROM pedido WHERE Ped_ID = $idpedido AND Pag_ID!=1 ";
+		$arrData = array(0);
+		$request = $this->delete($sql,$arrData);
+		}
+		return $request;
+		
+		}
 	}
  ?>

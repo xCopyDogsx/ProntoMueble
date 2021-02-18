@@ -1,4 +1,7 @@
 <?php headerAdmin($data); ?>
+<div id="divModal">
+  
+</div>
 <main class="app-content">
       <div class="app-title">
         <div>
@@ -23,7 +26,7 @@
               //Datos del cliente
               $nombreCliente = $cl->name->given_name.' '.$cl->name->surname;
               $emailCliente = $cl->email_address;
-              $telCliente = $cl->phone->phone_number->national_number;
+              $telCliente = isset($cl->phone)?$cl->phone->phone_number->national_number:"";
               $codCiudad = $cl->address->country_code;
               //Dirección
               $direccion1 = $trs->shipping->address->address_line_1;
@@ -60,7 +63,7 @@
                    <?php if(!$reembolso){
                       if($_SESSION['permisosMod']['Perm_Act']&&$_SESSION['userData']['Rol_Nom']!="Cliente"){
                     ?>
-                  <a href="#" class="btn btn-outline-primary"><i class="fa fa-reply-all" aria-hidden="true"></i> Reembolsar</a>
+                  <button class="btn btn-outline-primary" onClick="fntTransaccion('<?=$idTransaccion?>');"><i class="fa fa-reply-all" aria-hidden="true"></i> Reembolsar</button>
                   <?php }
                     } ?>
                 </div>

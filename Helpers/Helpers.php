@@ -246,7 +246,7 @@
         }
         return $request;
     }    
-    function CurlConnectionPost(string $ruta,$contentType,$token){
+    function CurlConnectionPost(string $ruta, string $contentType = null, string $token){
         $content_type = $contentType != null ? $contentType : "application/x-www-form-urlencoded";
         if($token != null){
             $arrHeader = array('Content-Type:'.$content_type,

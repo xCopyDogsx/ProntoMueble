@@ -63,3 +63,107 @@ tablePedidos = $('#tablePedidos').dataTable( {
     "iDisplayLength": 10,
     "order":[[0,"asc"]]  
 });
+function fntTransaccion(idtransaccion){
+    let request=(window.XMLHttpRequest)?
+                new XMLHttpRequest():
+                new ActiveXObject('Microsoft.XMLHTTP');
+    let ajaxUrl = base_url+'/Pedidos/getTransaccion/'+idtransaccion;
+    divLoading.style.display="flex";
+    request.open("GET",ajaxUrl,true);
+    request.send();
+    request.onreadystatechange=function(){
+        if(request.readyState ==4 && request.status==200){
+            let objData = JSON.parse(request.responseText);
+            if(objData.status){
+                document.querySelector("#divModal").innerHTML=objData.html;
+                divLoading.style.display="none";
+                $('#modalReembolso').modal('show');
+            }else{
+                swal("Error",objData.msg,"error");
+            }
+        }
+    }
+                
+}
+function fntReembolsar(){
+    let idTransaccion=document.querySelector("#idtransaccion").value;
+    let observacion=document.querySelector("#txtObservacion").value;
+    if(idTransaccion==''||observacion==''){
+        swal("","Complete todos los campos.","error");
+        return false;
+    }
+    swal({
+        title: "Iniciar proceso",
+        text: "¿Realmente quiere realizar el proceso de reembolso?",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Si",
+        cancelButtonText: "No",
+        closeOnConfirm: true,
+        closeOnCancel: true
+    }, function(isConfirm) {
+        if (isConfirm) 
+        {
+             $('#modalReembolso').modal('hide');
+             divLoading.style.display="flex";
+             let request=(window.XMLHttpRequest)?
+                new XMLHttpRequest():
+                new ActiveXObject('Microsoft.XMLHTTP');
+            let ajaxUrl = base_url+'/Pedidos/setReembolso/';
+            let formData = new FormData();
+            formData.append('idtransaccion',idTransaccion);
+            formData.append('observacion',observacion);
+            request.open("POST",ajaxUrl,true);
+            request.send(formData);
+            request.onreadystatechange=function(){
+                 if(request.readyState !=4)return; 
+                    if(request.status==200){
+                       let objData=JSON.parse(request.responseText);
+                       if(objData.status){
+                        window.location.reload();
+                       }else{
+                        swal("Error",objData.msg,"error");
+                       }
+                       divLoading.style.display="none";
+                       return false;
+                 }
+            }
+        }
+    });
+}
+function fntDelInfo(idpedido){
+    swal({
+        title: "Eliminar pedido",
+        text: "¿Realmente quiere eliminar este pedido?",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Si, eliminar",
+        cancelButtonText: "No, cancelar",
+        closeOnConfirm: false,
+        closeOnCancel: true
+    }, function(isConfirm) {
+        
+        if (isConfirm) 
+        {
+            let request = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
+            let ajaxUrl = base_url+'/Pedidos/delPedido';
+            let strData = "idPedido="+idpedido;
+            request.open("POST",ajaxUrl,true);
+            request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            request.send(strData);
+            request.onreadystatechange = function(){
+                if(request.readyState == 4 && request.status == 200){
+                    let objData = JSON.parse(request.responseText);
+                    if(objData.status)
+                    {
+                        swal("Eliminar", objData.msg , "success");
+                        tablePedidos.api().ajax.reload();
+                    }else{
+                        swal("Atención", objData.msg , "error");
+                    }
+                }
+            }
+        }
+
+    });
+}

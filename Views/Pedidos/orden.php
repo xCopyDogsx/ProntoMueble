@@ -104,7 +104,7 @@
                 </div>
               </div>
               <div class="row d-print-none mt-2">
-                <div class="col-12 text-right"><a class="btn btn-primary" href="javascript:window.print('#sPedido');"><i class="fa fa-print"></i> Imprimir</a></div>
+                <div class="col-12 text-right"><a class="btn btn-primary" id="pdf" href="javascript:window.print('#sPedido');"><i class="fa fa-print"></i> Imprimir</a></div>
               </div>
             </section>
           </div>
