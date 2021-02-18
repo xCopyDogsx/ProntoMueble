@@ -49,8 +49,9 @@ class Pedidos extends Controllers{
 
 						<button class="btn btn-danger btn-sm" onClick="fntViewDPF('.$arrData[$i]['Ped_ID'].')" title="Generar PDF"><i class="fas fa-file-pdf"></i></button>';
 						if($arrData[$i]['Pag_ID']==1){
-							$btnView .=' <button class="btn btn-info btn-sm" onClick="fntViewInfo('.$arrData[$i]['Ped_ID'].')"
-										title="Ver transacción"><i class="fa fa-paypal"	aria-hidden="true"></i></button>';
+							$btnView .=' 
+							<a title="Ver detalle" href="'.base_url().'/pedidos/transaccion/'.$arrData[$i]['Ped_IDPayPal'].'" target="_blank"
+									class="btn btn-info btn-sm"><i class="fa fa-paypal"	aria-hidden="true"></i></a>';
 						}else{
 							$btnView .=' <button class="btn btn-info btn-sm" disabled=""><i class="fa fa-paypal"	aria-hidden="true"></i></button>';
 						}
@@ -72,6 +73,9 @@ class Pedidos extends Controllers{
 			if(empty($_SESSION['permisosMod']['Perm_Vista'])){
 				header("Location:".base_url().'/dashboard');
 			}
+			if(!is_numeric($idpedido)){
+				header('Location: '.base_url().'/pedidos');
+			}else{
 			$idpersona="";
 			if($_SESSION['userData']['Rol_Nom']=="Cliente"){
 					$idpersona =$_SESSION['userData']['Per_ID'];
@@ -85,8 +89,36 @@ class Pedidos extends Controllers{
 			}else{
 				$this->views->getView($this,"ordenerror",$data);
 			}
+			}
 			
 		}
+
+	public function transaccion($transaccion){
+			if(empty($_SESSION['permisosMod']['Perm_Vista'])){
+				header("Location:".base_url().'/dashboard');
+			}
+			
+			$idpersona="";
+			if($_SESSION['userData']['Rol_Nom']=="Cliente"){
+					$idpersona =$_SESSION['userData']['Per_ID'];
+				}
+			$requestTransaccion = $this->model->selectTransPaypal($transaccion);
+			$data['page_tag'] = "Detalle transacción - ProntoMueble";
+			$data['page_title'] = "Transacción <small>Pronto Mueble</small>";
+			$data['page_name'] = "Detalles de la transacción";
+			$data['objTransaccion']=$requestTransaccion;
+			$data['arrPedido'] = $this->model->selectPedido(2,$idpersona);
+			if(!empty($data['arrPedido'])){
+				$this->views->getView($this,"transaccion",$data);
+			}else{
+				$this->views->getView($this,"ordenerror",$data);
+			}
+			
+		}
+
+
+
+
 }
 
  ?>

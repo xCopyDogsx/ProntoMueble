@@ -73,6 +73,19 @@
 
 			}
 			return $request;
+		}
+		public function selectTransPaypal($idtransaccion){
+			$objTransaccion = array();
+			$sql = "SELECT Ped_DatPayPal FROM pedido WHERE Ped_IDPayPal='{$idtransaccion}'";
+			$requestData = $this->select($sql);
+			if(!empty($requestData)){
+				$objData = json_decode($requestData['Ped_DatPayPal']);
+				$urlTransaccion = $objData->purchase_units[0]->payments->captures[0]->links[0]->href;
+				$urlOrden = $objData->purchase_units[0]->payments->captures[0]->links[2]->href;
+				$objTransaccion = CurlConnectionGet($urlOrden,"application/json",getToken());
+
+			}
+			return $objTransaccion;
 		}	
 	}
  ?>

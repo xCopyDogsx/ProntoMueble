@@ -25,7 +25,7 @@
                           <th>Referencia</th>
                           <th>Fecha</th>
                           <th>Monto</th>
-                          <th>Tipo pago</th>
+                          <th>Tipo de pago</th>
                           <th>Estado</th>
                           <th>Acciones</th>
                         </tr>

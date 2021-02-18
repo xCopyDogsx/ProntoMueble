@@ -13,7 +13,7 @@ tablePedidos = $('#tablePedidos').dataTable( {
         {"data":"transaccion"},
         {"data":"fecha"},
         {"data":"Ped_Total"},
-        {"data":"Pag_ID"},
+        {"data":"Pag_Nom"},
         {"data":"Ped_Status"},
         {"data":"options"}
     ],
