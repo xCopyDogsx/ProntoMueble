@@ -170,7 +170,7 @@
 			$this->intIdProducto = $idproducto;
 			$sql = "DELETE FROM producto WHERE Prod_ID = $this->intIdProducto ";
 			$arrData = array(0);
-			$request = $this->update($sql,$arrData);
+			$request = $this->delete($sql,$arrData);
 			return $request;
 		}
 	}

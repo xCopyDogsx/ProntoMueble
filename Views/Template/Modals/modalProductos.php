@@ -3,7 +3,7 @@
   <div class="modal-dialog modal-xl" >
     <div class="modal-content">
       <div class="modal-header headerRegister">
-        <h5 class="modal-title" id="titleModal">Nueva Producto</h5>
+        <h5 class="modal-title" id="titleModal">Nuevo Producto</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -113,7 +113,7 @@
 <div class="modal fade" id="modalViewProducto" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog modal-xl" >
     <div class="modal-content">
-      <div class="modal-header header-primary">
+      <div class="modal-header header-primary ">
         <h5 class="modal-title" id="titleModal">Datos del Producto</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>

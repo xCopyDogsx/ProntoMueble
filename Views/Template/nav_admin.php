@@ -63,6 +63,15 @@
             </a>
         </li>
          <?php } ?>
+         <?php if($_SESSION['userData']['Rol_Nom']=="Administrador"){ ?>
+        <li>
+            <a class="app-menu__item" href="<?= base_url(); ?>/proveedores">
+                <i class="app-menu__icon fas fa-parachute-box" aria-hidden="true"></i>
+                <span class="app-menu__label">Proveedores</span>
+            </a>
+        </li>
+            <?php } ?>
+
         <li>
             <a class="app-menu__item" href="<?= base_url(); ?>/logout">
                 <i class="app-menu__icon fa fa-sign-out" aria-hidden="true"></i>
