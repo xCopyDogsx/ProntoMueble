@@ -216,5 +216,22 @@ public function delEnvios(){
 		}
 			die();
 		}
+public function delEnvio(){
+			if($_POST){
+				if($_SESSION['permisosMod']['Perm_Elim']){
+					$idprov = intval($_POST['idProveedor']);
+					$requestDelete = $this->model->deleteEnvio($idprov);
+					if($requestDelete)
+					{
+						$arrResponse = array('status' => true, 'msg' => 'Se ha eliminado el proveedor');
+					}else{
+						$arrResponse = array('status' => false, 'msg' => 'Error al eliminar el proveedor.');
+					}
+					echo json_encode($arrResponse,JSON_UNESCAPED_UNICODE);
+				}
+			}
+			die();
+		}
+
 	}	
 		?>

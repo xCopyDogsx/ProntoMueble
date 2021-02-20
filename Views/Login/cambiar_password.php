@@ -28,9 +28,9 @@
           </div>
         </div>
         <form id="formCambiarPass" name="formCambiarPass" class="forget-form" action="">
-          <input type="hidden" id="idUsuario" name="idUsuario" value="<?= $data['idpersona']; ?>" required >
-          <input type="hidden" id="txtEmail" name="txtEmail" value="<?= $data['email']; ?>" required >
-          <input type="hidden" id="txtToken" name="txtToken" value="<?= $data['token']; ?>" required >
+          <input type="hidden" id="idUsuario" name="idUsuario" value="<?= $data['Per_ID']; ?>" required >
+          <input type="hidden" id="txtEmail" name="txtEmail" value="<?= $data['Per_Email']; ?>" required >
+          <input type="hidden" id="txtToken" name="txtToken" value="<?= $data['Per_Toke']; ?>" required >
           <h3 class="login-head"><i class="fas fa-key"></i> Cambiar contraseña</h3>
           <div class="form-group">
             <input id="txtPassword" name="txtPassword" class="form-control" type="password" placeholder="Nueva contraseña" required >

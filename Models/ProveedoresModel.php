@@ -156,6 +156,12 @@ public function updateProveedor(int $idproveedor,$nombre,$direccion,$fijo,$celul
      		$request = $this->delete($sql);
      		return $request;
      	}
-     	
+     	public function deleteEnvio(int $idproveedor){
+			$this->Id= $idproveedor;
+			$sql = "DELETE FROM envio WHERE Prov_ID = $this->Id ";
+			$arrData = array(0);
+			$request = $this->delete($sql,$arrData);
+			return $request;
+			}
 		}	
 		?>
