@@ -102,17 +102,16 @@
 					$status=$objTransaccion->status;
 					$jsonData=json_encode($objTransaccion);
 					$observacion=$observacion;
-					$query_insert="INSERT INTO reembolsos(Ped_ID.
-											Rem_TransID,
-											Rem_Data,
-											Rem_Obs,
-											Rem_Status)
+					$query_insert="INSERT INTO reembolsos(Rem_TransID,Rem_Data,Rem_Obs,Rem_Status,Ped_ID)
 									VALUES (?,?,?,?,?)";
-					$arrData=array($idpedido,
-								   $idtrans,
-								   $jsonData,
-								   $observacion,
-								   $status);
+								//echo $jsonData;
+					$arrData=array(
+									$idtrans,
+									$jsonData,
+                                    $observacion,
+									$status,
+									$idpedido
+								   );
 					$request_insert=$this->insert($query_insert,$arrData);
 					if($request_insert>0){
 						
