@@ -1,8 +1,10 @@
+var fecha = new Date();
+var ano = fecha.getFullYear();
 var data = {
-      	labels: ["Ene.", "Feb", "Maz.", "Abr.", "May.","Jun.","Jul.","Ago.","Sep.","Oct.","Nov.","Dic."],
+      	labels: ["Ene.", "Feb", "Marz.", "Abr.", "May.","Jun.","Jul.","Ago.","Sep.","Oct.","Nov.","Dic."],
       	datasets: [
       		{
-      			label: "My First dataset",
+      			label: "Año "+ano,
       			fillColor: "rgba(220,220,220,0.2)",
       			strokeColor: "rgba(220,220,220,1)",
       			pointColor: "rgba(220,220,220,1)",
@@ -12,7 +14,7 @@ var data = {
       			data: [65, 59, 80, 81, 56,65, 59, 80, 81, 56,20,30]
       		},
       		{
-      			label: "My Second dataset",
+      			label: "Año "+(ano-1),
       			fillColor: "rgba(151,187,205,0.2)",
       			strokeColor: "rgba(151,187,205,1)",
       			pointColor: "rgba(151,187,205,1)",
@@ -23,18 +25,23 @@ var data = {
       		}
       	]
       };
+      if(complete==0||pendiente==0){
+             swal("Atención", "Puede que algunos graficos no se generen dado a que el valor de sus datos es 0, se colocarán valores de prueba." , "error");
+             complete=50;
+             pendiente=50;
+      }
       var pdata = [
       	{
-      		value: 200,
+      		value: complete,
       		color: "#46BFBD",
       		highlight: "#5AD3D1",
-      		label: "Complete"
+      		label: "Completados"
       	},
       	{
-      		value: 40,
+      		value: pendiente,
       		color:"#F7464A",
       		highlight: "#FF5A5E",
-      		label: "In-Progress"
+      		label: "En progreso"
       	}
       ]
       

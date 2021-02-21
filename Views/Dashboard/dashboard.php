@@ -14,7 +14,7 @@
           <div class="widget-small primary coloured-icon"><i class="icon fa fa-users fa-3x"></i>
             <div class="info">
               <h4>Clientes registrados</h4>
-              <p><b>5</b></p>
+              <p><b><?= $data['clientes']['COUNT(*)']?></b></p>
             </div>
           </div>
         </div>
@@ -22,7 +22,8 @@
           <div class="widget-small danger coloured-icon"><i class="icon fas fa-exclamation-triangle"></i>
             <div class="info">
               <h4>Pedidos pendientes</h4>
-              <p><b>25</b></p>
+              <p><b><?= $data['pendientes']['COUNT(*)']?></b></p>
+               <script type="text/javascript">var pendiente="<?= $data['pendientes']['COUNT(*)']?>";</script>
             </div>
           </div>
         </div>
@@ -30,7 +31,8 @@
           <div class="widget-small primary coloured-icon"><i class="icon fas fa-check-double"></i>
             <div class="info">
               <h4>Pedidos completados</h4>
-              <p><b>10</b></p>
+              <p><b><?= $data['ready']['COUNT(*)']?></b></p>
+            <script type="text/javascript">var complete="<?= $data['ready']['COUNT(*)']?>";</script>
             </div>
           </div>
         </div>
@@ -38,7 +40,7 @@
           <div class="widget-small primary coloured-icon"><i class="icon fas fa-briefcase"></i>
             <div class="info">
               <h4>Empleados</h4>
-              <p><b>500</b></p>
+              <p><b><?= $data['emp']['COUNT(*)']?></b></p>
             </div>
           </div>
         </div>

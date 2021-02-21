@@ -9,8 +9,5 @@
 			
 		}
 
-		public function getCategorias(){
-			
-		}	
 	}
  ?>
