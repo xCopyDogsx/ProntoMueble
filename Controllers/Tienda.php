@@ -200,7 +200,7 @@
 		public function registro(){
 			error_reporting(0);
 			if($_POST){
-				if(empty($_POST['txtNombre']) || empty($_POST['txtApellido']) || empty($_POST['txtTelefono']) || empty($_POST['txtEmailCliente']))
+				if(empty($_POST['txtNombre']) || empty($_POST['txtApellido']) || empty($_POST['txtTelefono']) || empty($_POST['txtEmailCliente'])||empty($_POST['txtDoc']))
 				{
 					$arrResponse = array("status" => false, "msg" => 'Datos incorrectos.');
 				}else{ 
@@ -209,6 +209,7 @@
 					$intTelefono = intval(strClean($_POST['txtTelefono']));
 					$strEmail = strtolower(strClean($_POST['txtEmailCliente']));
 					$intTipoId = 7;
+					$intDocId=intval(strClean($_POST['txtDoc']));
 					$request_user = "";
 					
 					$strPassword =  passGenerator();
@@ -218,7 +219,8 @@
 														$intTelefono, 
 														$strEmail,
 														$strPasswordEncript,
-														$intTipoId );
+														$intTipoId,
+														$intDocId );
 					if($request_user > 0 )
 					{
 						$arrResponse = array('status' => true, 'msg' => 'Datos guardados correctamente.');

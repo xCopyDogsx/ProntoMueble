@@ -29,7 +29,7 @@ class Clientes extends Controllers{
 	public function setCliente(){
 		error_reporting(0);
 		if($_POST){
-			if(empty($_POST['txtIdentificacion']) || empty($_POST['txtNombre']) || empty($_POST['txtApellido']) || empty($_POST['txtTelefono']) || empty($_POST['txtEmail']) || empty($_POST['txtNac']))
+			if(empty($_POST['txtIdentificacion']) || empty($_POST['txtNombre']) || empty($_POST['txtApellido']) || empty($_POST['txtTelefono']) || empty($_POST['txtEmail']))
 			{
 				$arrResponse = array("status" => false, "msg" => 'Datos incorrectos.');
 			}else{ 
@@ -39,7 +39,6 @@ class Clientes extends Controllers{
 				$strApellido = ucwords(strClean($_POST['txtApellido']));
 				$intTelefono = intval(strClean($_POST['txtTelefono']));
 				$strEmail = strtolower(strClean($_POST['txtEmail']));
-				$strFecNac = $_POST['txtNac'];
 				$intTipoId = 7;
 				$request_user = "";
 				if($idUsuario == 0)
@@ -54,7 +53,6 @@ class Clientes extends Controllers{
 																			$intTelefono, 
 																			$strEmail,
 																			$strPasswordEncript,
-																			$strFecNac,
 																			$intTipoId 
 																			 );
 					}

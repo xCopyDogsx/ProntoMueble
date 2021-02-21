@@ -63,7 +63,7 @@
 			if($_SESSION['idUser'] != 1 ){
 				$whereAdmin = " and p.Per_ID != 1 ";
 			}
-			$sql = "SELECT p.Per_ID,p.Per_Doc,p.Per_Nom,p.Per_Ape,p.Per_Tel,p.Per_Email,p.Per_Status,p.Per_FecReg,p.Per_FecNac,p.Rol_ID,r.Rol_Nom 
+			$sql = "SELECT p.Per_ID,p.Per_Doc,p.Per_Nom,p.Per_Ape,p.Per_Tel,p.Per_Email,p.Per_Status,p.Per_FecReg,p.Rol_ID,r.Rol_Nom 
 					FROM persona p 
 					INNER JOIN rol r
 					ON p.Rol_ID = r.Rol_ID
@@ -73,7 +73,7 @@
 		}
 		public function selectUsuario(int $idpersona){
 			$this->intIdUsuario = $idpersona;
-			$sql = "SELECT p.Per_ID,p.Per_Doc,p.Per_Nom,p.Per_Ape,p.Per_Tel,p.Per_Email,r.Rol_ID,r.Rol_Nom,p.Per_Status, DATE_FORMAT(p.Per_FecReg, '%d-%m-%Y') as fechaRegistro, DATE_FORMAT(p.Per_FecNac, '%d-%m-%Y') as fechaNacimiento
+			$sql = "SELECT p.Per_ID,p.Per_Doc,p.Per_Nom,p.Per_Ape,p.Per_Tel,p.Per_Email,r.Rol_ID,r.Rol_Nom,p.Per_Status, DATE_FORMAT(p.Per_FecReg, '%d-%m-%Y') as fechaRegistro
 					FROM persona p
 					INNER JOIN rol r
 					ON p.Rol_ID = r.Rol_ID

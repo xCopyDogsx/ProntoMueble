@@ -60,10 +60,9 @@ if(document.querySelector("#formCliente")){
             let strApellido = document.querySelector('#txtApellido').value;
             let strEmail = document.querySelector('#txtEmail').value;
             let intTelefono = document.querySelector('#txtTelefono').value;
-            let strFecha = document.querySelector('#txtNac').value;
             let strPassword = document.querySelector('#txtPassword').value;
 
-            if(strIdentificacion == '' || strApellido == '' || strNombre == '' || strEmail == '' || intTelefono == '' || strFecha =='' )
+            if(strIdentificacion == '' || strApellido == '' || strNombre == '' || strEmail == '' || intTelefono == '' )
             {
                 swal("Atención", "Todos los campos son obligatorios." , "error");
                 return false;
@@ -95,7 +94,6 @@ if(document.querySelector("#formCliente")){
                            rowTable.cells[3].textContent =  strApellido;
                            rowTable.cells[4].textContent =  strEmail;
                            rowTable.cells[5].textContent =  intTelefono;
-                           rowTable.cells[6].textContent =  strFecha;
                            rowTable = "";
                         }
                         $('#modalFormCliente').modal("hide");
@@ -131,7 +129,6 @@ function fntViewInfo(idpersona){
                 document.querySelector("#celTelefono").innerHTML = objData.data.Per_Tel;
                 document.querySelector("#celEmail").innerHTML = objData.data.Per_Email;
                 document.querySelector("#celFechaRegistro").innerHTML = objData.data.fechaRegistro;
-                document.querySelector("#celFechaNacimiento").innerHTML = objData.data.fechaNacimiento;  
                 $('#modalViewCliente').modal('show');
             }else{
                 swal("Error", objData.msg , "error");

@@ -62,7 +62,7 @@
 				<div class="content-topbar flex-sb-m h-full container">
 					<div class="left-top-bar">
 						<?php if(!empty($_SESSION['login'])){
-					echo "Bienvenido: ".$_SESSION['nombres'];
+					echo "Bienvenido: ".$_SESSION['userData']['Per_Nom'].' '.$_SESSION['userData']['Per_Ape'];
 						}else{
 							echo "Los mejores en decoración para tu hogar";
 						}

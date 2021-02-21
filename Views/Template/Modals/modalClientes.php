@@ -36,10 +36,6 @@
                   <label for="txtEmail">Email <span class="required">*</span></label>
                   <input type="email" class="form-control valid validEmail" id="txtEmail" name="txtEmail" required="">
                 </div>
-                 <div class="form-group col-md-4">
-                  <label for="txtNacimiento">Fecha de nacimiento <span class="required">*</span></label>
-                  <input type="date" class="form-control" id="txtNac" name="txtNac" required="">
-                </div>
                 <div class="form-group col-md-4">
                   <label for="txtPassword">Password </label>
                   <input type="password" class="form-control" id="txtPassword" name="txtPassword" >
@@ -74,31 +70,27 @@
           <tbody>
             <tr>
               <td>Identificación:</td>
-              <td id="celIdentificacion">654654654</td>
+              <td id="celIdentificacion"></td>
             </tr>
             <tr>
               <td>Nombres:</td>
-              <td id="celNombre">Jacob</td>
+              <td id="celNombre"></td>
             </tr>
             <tr>
               <td>Apellidos:</td>
-              <td id="celApellido">Jacob</td>
+              <td id="celApellido"></td>
             </tr>
             <tr>
               <td>Teléfono:</td>
-              <td id="celTelefono">Larry</td>
+              <td id="celTelefono"></td>
             </tr>
             <tr>
               <td>Email (Usuario):</td>
-              <td id="celEmail">Larry</td>
+              <td id="celEmail"></td>
             </tr>
             <tr>
               <td>Fecha registro:</td>
-              <td id="celFechaRegistro">Larry</td>
-            </tr>
-            <tr>
-              <td>Fecha de nacimiento:</td>
-              <td id="celFechaNacimiento">Larry</td>
+              <td id="celFechaRegistro"></td>
             </tr>
           </tbody>
         </table>

@@ -37,7 +37,7 @@
 	const CAT_BANNER = "4,5,6";
 
 	//Datos para Encriptar / Desencriptar
-	const KEY = 'abelosh';
+	const KEY = '@?DeCrIpTMeThis2021!';
 	const METHODENCRIPT = "AES-128-ECB";
 
 	//Envío

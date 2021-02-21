@@ -131,6 +131,13 @@ $totalUSD = round($totalUSD);
 									</div>
 						 		</div>
 						 		<div class="row">
+						 				
+						 		</div>
+						 		<div class="row">
+						 			<div class="col col-md-6 form-group">
+										<label for="txtDoc">Documento de identidad</label>
+										<input type="text" class="form-control valid validNumber" id="txtDoc" name="txtDoc" required="">
+									</div>
 									<div class="col col-md-6 form-group">
 										<label for="txtTelefono">Teléfono</label>
 										<input type="text" class="form-control valid validNumber" id="txtTelefono" name="txtTelefono" required="" onkeypress="return controlTag(event);">

@@ -11,14 +11,13 @@ class ClientesModel extends Mysql
 	private $strToken;
 	private $intTipoId;
 	private $intStatus;
-	private $strFechaNac;
 
 	public function __construct()
 	{
 		parent::__construct();
 	}	
 
-	public function insertCliente(string $identificacion, string $nombre, string $apellido, int $telefono, string $email, string $password,$fechaNac,int $tipoid){
+	public function insertCliente(string $identificacion, string $nombre, string $apellido, int $telefono, string $email, string $password,int $tipoid){
 
 		$this->strIdentificacion = $identificacion;
 		$this->strNombre = $nombre;
@@ -26,7 +25,7 @@ class ClientesModel extends Mysql
 		$this->intTelefono = $telefono;
 		$this->strEmail = $email;
 		$this->strPassword = $password;
-		$this->strFechaNac = $fechaNac;
+
 		$this->intTipoId = $tipoid;
 
 
@@ -37,15 +36,14 @@ class ClientesModel extends Mysql
 
 		if(empty($request))
 		{
-			$query_insert  = "INSERT INTO persona(Per_Doc,Per_Nom,Per_Ape,Per_Tel,Per_Email,Per_Passw,Per_FecNac,Rol_ID) 
-							  VALUES(?,?,?,?,?,?,?,?)";
+			$query_insert  = "INSERT INTO persona(Per_Doc,Per_Nom,Per_Ape,Per_Tel,Per_Email,Per_Passw,Rol_ID) 
+							  VALUES(?,?,?,?,?,?,?)";
         	$arrData = array($this->strIdentificacion,
     						$this->strNombre,
     						$this->strApellido,
     						$this->intTelefono,
     						$this->strEmail,
     						$this->strPassword,
-    						$this->strFechaNac,
     						$this->intTipoId    						
     								);
         	$request_insert = $this->insert($query_insert,$arrData);
@@ -67,7 +65,7 @@ class ClientesModel extends Mysql
 
 	public function selectCliente(int $idpersona){
 		$this->intIdUsuario = $idpersona;
-		$sql = "SELECT Per_ID,Per_Doc,Per_Nom,Per_Ape,Per_Tel,Per_Email,Per_Status, DATE_FORMAT(Per_FecReg, '%d-%m-%Y') as fechaRegistro, DATE_FORMAT(Per_FecNac, '%d-%m-%Y') as fechaNacimiento
+		$sql = "SELECT Per_ID,Per_Doc,Per_Nom,Per_Ape,Per_Tel,Per_Email,Per_Status, DATE_FORMAT(Per_FecReg, '%d-%m-%Y') as fechaRegistro
 				FROM persona
 				WHERE Per_ID = $this->intIdUsuario and Rol_ID = 7";
 		$request = $this->select($sql);

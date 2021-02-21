@@ -11,8 +11,8 @@ trait TCliente{
 	private $strToken;
 	private $intTipoId;
 	private $intIdTransaccion;
-
-	public function insertCliente(string $nombre, string $apellido, int $telefono, string $email, string $password, int $tipoid){
+	private $DocId;
+	public function insertCliente(string $nombre, string $apellido, int $telefono, string $email, string $password, int $tipoid,$documento){
 		$this->con = new Mysql();
 		$this->strNombre = $nombre;
 		$this->strApellido = $apellido;
@@ -20,7 +20,7 @@ trait TCliente{
 		$this->strEmail = $email;
 		$this->strPassword = $password;
 		$this->intTipoId = $tipoid;
-
+		$this->DocId = $documento;
 		$return = 0;
 		$sql = "SELECT * FROM persona WHERE 
 				Per_ID = '{$this->strEmail}' ";
@@ -28,14 +28,15 @@ trait TCliente{
 
 		if(empty($request))
 		{
-			$query_insert  = "INSERT INTO persona(Per_Nom,Per_Ape,Per_Tel,Per_Email,Per_Passw,Rol_ID) 
-							  VALUES(?,?,?,?,?,?)";
+			$query_insert  = "INSERT INTO persona(Per_Nom,Per_Ape,Per_Tel,Per_Email,Per_Passw,Rol_ID,Per_Doc) 
+							  VALUES(?,?,?,?,?,?,?)";
         	$arrData = array($this->strNombre,
     						$this->strApellido,
     						$this->intTelefono,
     						$this->strEmail,
     						$this->strPassword,
-    						$this->intTipoId);
+    						$this->intTipoId,
+    						$this->DocId);
         	$request_insert = $this->con->insert($query_insert,$arrData);
         	$return = $request_insert;
 		}else{
