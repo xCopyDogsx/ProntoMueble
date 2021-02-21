@@ -72,6 +72,9 @@ $rutacategoria = $arrProducto['Cat_ID'].'/'.$arrProducto['ruta_categoria'];
 						<div class="p-t-33">
 							<div class="flex-w flex-r-m p-b-10">
 								<div class="size-204 flex-w flex-m respon6-next">
+									<?php if($arrProducto['Prod_Stock']>0){
+
+										?>
 									<div class="wrap-num-product flex-w m-r-20 m-tb-10">
 										<div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
 											<i class="fs-16 zmdi zmdi-minus"></i>
@@ -83,10 +86,16 @@ $rutacategoria = $arrProducto['Cat_ID'].'/'.$arrProducto['ruta_categoria'];
 											<i class="fs-16 zmdi zmdi-plus"></i>
 										</div>
 									</div>
-
+									
 									<button id="<?= openssl_encrypt($arrProducto['Prod_ID'],METHODENCRIPT,KEY); ?>" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
 										Agregar al carrito
 									</button>
+									<?php }else{
+										?>
+										<div class="alert alert-danger" role="alert">
+ 											 Este producto esta agotado por el momento
+										</div>
+									<?php } ?>
 								</div>
 							</div>	
 						</div>
@@ -142,10 +151,19 @@ $rutacategoria = $arrProducto['Cat_ID'].'/'.$arrProducto['ruta_categoria'];
 						<div class="block2">
 							<div class="block2-pic hov-img0">
 								<img src="<?= $portada ?>" alt="<?= $arrProductos[$p]['Prod_Nom'] ?>">
-
+								<?php if($arrProductos[$p]['Prod_Stock']>0){?>
 								<a href="<?= base_url().'/tienda/producto/'.$arrProductos[$p]['Prod_ID'].'/'.$ruta; ?>" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
 									Ver producto
 								</a>
+							<?php }else{
+							?>
+								<a href="<?= base_url().'/tienda/producto/'.$arrProductos[$p]['Prod_ID'].'/'.$ruta; ?>" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
+									Sin existencias
+								</a>
+
+							<?php }
+								?>
+							
 							</div>
 
 							<div class="block2-txt flex-w flex-t p-t-14">

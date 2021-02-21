@@ -81,7 +81,9 @@ window.addEventListener('load', function() {
             let strPrecio = document.querySelector('#txtPrecio').value;
             let intStock = document.querySelector('#txtStock').value;
             let intStatus = document.querySelector('#listStatus').value;
-            if(strNombre == '' || intCodigo == '' || strPrecio == '' || intStock == '' )
+            let strColor = document.querySelector('#txtColor').value;
+            let strDime = document.querySelector('#txtDimen').value;
+            if(strNombre == '' || intCodigo == '' || strPrecio == '' || intStock == '' ||strColor == ''||strDime=='')
             {
                 swal("Atención", "Todos los campos son obligatorios." , "error");
                 return false;
@@ -282,7 +284,8 @@ function fntViewInfo(idProducto){
                 document.querySelector("#celCategoria").innerHTML = objProducto.categoria;
                 document.querySelector("#celStatus").innerHTML = estadoProducto;
                 document.querySelector("#celDescripcion").innerHTML = objProducto.Prod_Desc;
-
+                document.querySelector("#celDimen").innerHTML = objProducto.Prod_Dim;
+                document.querySelector("#celColor").innerHTML = objProducto.Prod_Color;
                 if(objProducto.images.length > 0){
                     let objProductos = objProducto.images;
                     for (let p = 0; p < objProductos.length; p++) {
@@ -326,6 +329,8 @@ function fntEditInfo(element,idProducto){
                 document.querySelector("#txtStock").value = objProducto.Prod_Stock;
                 document.querySelector("#listCategoria").value = objProducto.Cat_Nom;
                 document.querySelector("#listStatus").value = objProducto.Prod_Status;
+                document.querySelector("#txtDimen").value = objProducto.Prod_Dim;
+                document.querySelector("#txtColor").value = objProducto.Prod_Color;
                 tinymce.activeEditor.setContent(objProducto.Prod_Desc); 
                 $('#listCategoria').selectpicker('render');
                 $('#listStatus').selectpicker('render');

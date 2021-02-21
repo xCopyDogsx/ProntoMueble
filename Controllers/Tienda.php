@@ -383,5 +383,36 @@
 			}
 			unset($_SESSION['dataorden']);
 		}
+	public function registrar(){
+				if(empty($_SESSION)){
+				$data['page_tag'] = "Registro de cliente nuevo";
+				$data['page_title'] = "Registro de cliente nuevo";
+				$data['page_name'] = "registro";
+				$this->views->getView($this,"registro",$data);
+				}else{
+					header("Location: ".base_url());
+				}			
 	}
+	public function nosotros(){
+				
+				$data['page_tag'] = "Acerca de nosotros";
+				$data['page_title'] = "Acerca de nosotros";
+				$data['page_name'] = "acerca";
+				$this->views->getView($this,"nosotros",$data);		
+	}
+	public function contacto(){
+				
+				$data['page_tag'] = "Contactanos";
+				$data['page_title'] = "Contactano";
+				$data['page_name'] = "contacto";
+				$this->views->getView($this,"contacto",$data);		
+	}
+
+	}
+	
+	
+
+
+
  ?>
+

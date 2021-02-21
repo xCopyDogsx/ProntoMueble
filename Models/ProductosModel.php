@@ -12,6 +12,8 @@
 		private $intStatus;
 		private $strRuta;
 		private $strImagen;
+		private $dimensio;
+		private $color;
 
 		public function __construct()
 		{
@@ -36,7 +38,7 @@
 			return $request;
 		}	
 
-		public function insertProducto(string $nombre, string $descripcion, int $codigo, int $categoriaid, string $precio, int $stock, string $ruta, int $status){
+		public function insertProducto(string $nombre, string $descripcion, int $codigo, int $categoriaid, string $precio, int $stock, string $ruta, int $status,$dim,$col){
 			$this->strNombre = $nombre;
 			$this->strDescripcion = $descripcion;
 			$this->intCodigo = $codigo;
@@ -45,6 +47,8 @@
 			$this->intStock = $stock;
 			$this->strRuta = $ruta;
 			$this->intStatus = $status;
+			$this->dimensio = $dim;
+			$this->color = $col;
 			$return = 0;
 			$sql = "SELECT * FROM producto WHERE Prod_Cod = '{$this->intCodigo}'";
 			$request = $this->select_all($sql);
@@ -57,8 +61,10 @@
 														Prod_Precio,
 														Prod_Stock,
 														Prod_Ruta,
-														Prod_Status) 
-								  VALUES(?,?,?,?,?,?,?,?)";
+														Prod_Status,
+														Prod_Color,
+														Prod_Dim) 
+								  VALUES(?,?,?,?,?,?,?,?,?,?)";
 	        	$arrData = array($this->intCategoriaId,
         						$this->intCodigo,
         						$this->strNombre,
@@ -66,7 +72,9 @@
         						$this->strPrecio,
         						$this->intStock,
         						$this->strRuta,
-        						$this->intStatus);
+        						$this->intStatus,
+        						$this->color,
+        						$this->dimensio);
 	        	$request_insert = $this->insert($query_insert,$arrData);
 	        	$return = $request_insert;
 			}else{
@@ -75,7 +83,7 @@
 	        return $return;
 		}
 
-		public function updateProducto(int $idproducto, string $nombre, string $descripcion, int $codigo, int $categoriaid, string $precio, int $stock, string $ruta, int $status){
+		public function updateProducto(int $idproducto, string $nombre, string $descripcion, int $codigo, int $categoriaid, string $precio, int $stock, string $ruta, int $status,$dim,$col){
 			$this->intIdProducto = $idproducto;
 			$this->strNombre = $nombre;
 			$this->strDescripcion = $descripcion;
@@ -85,6 +93,8 @@
 			$this->intStock = $stock;
 			$this->strRuta = $ruta;
 			$this->intStatus = $status;
+			$this->dimensio = $dim;
+			$this->color = $col;
 			$return = 0;
 			$sql = "SELECT * FROM producto WHERE Prod_Cod = '{$this->intCodigo}' AND Prod_ID != $this->intIdProducto ";
 			$request = $this->select_all($sql);
@@ -98,7 +108,9 @@
 							Prod_Precio=?,
 							Prod_Stock=?,
 							Prod_Ruta=?,
-							Prod_Status=? 
+							Prod_Status=?,
+							Prod_Dim=?,
+							Prod_Color=? 
 						WHERE Prod_ID = $this->intIdProducto ";
 				$arrData = array($this->intCategoriaId,
         						$this->intCodigo,
@@ -107,7 +119,9 @@
         						$this->strPrecio,
         						$this->intStock,
         						$this->strRuta,
-        						$this->intStatus);
+        						$this->intStatus,
+        						$this->dimensio,
+        						$this->color);
 
 	        	$request = $this->update($sql,$arrData);
 	        	$return = $request;
@@ -127,7 +141,9 @@
 							p.Prod_Stock,
 							p.Cat_ID,
 							c.Cat_Nom as categoria,
-							p.Prod_Status
+							p.Prod_Status,
+							p.Prod_Dim,
+							p.Prod_Color
 					FROM producto p
 					INNER JOIN prod_cat c
 					ON p.Cat_ID = c.Cat_ID

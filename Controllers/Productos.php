@@ -60,7 +60,7 @@
 
 		public function setProducto(){
 			if($_POST){
-				if(empty($_POST['txtNombre']) || empty($_POST['txtCodigo']) || empty($_POST['listCategoria']) || empty($_POST['txtPrecio']) || empty($_POST['listStatus']) )
+				if(empty($_POST['txtNombre']) || empty($_POST['txtCodigo']) || empty($_POST['listCategoria']) || empty($_POST['txtPrecio']) || empty($_POST['listStatus']) || empty($_POST['txtColor'])||empty($_POST['txtDimen']))
 				{
 					$arrResponse = array("status" => false, "msg" => 'Datos incorrectos.');
 				}else{
@@ -73,6 +73,8 @@
 					$strPrecio = strClean($_POST['txtPrecio']);
 					$intStock = intval($_POST['txtStock']);
 					$intStatus = intval($_POST['listStatus']);
+					$color = strClean($_POST['txtColor']);
+					$dimensiones = $_POST['txtDimen'];
 					$request_producto = "";
 
 					$ruta = strtolower(clear_cadena($strNombre));
@@ -89,7 +91,9 @@
 																		$strPrecio, 
 																		$intStock, 
 																		$ruta,
-																		$intStatus );
+																		$intStatus,
+																		$dimensiones,
+																		$color );
 						}
 					}else{
 						$option = 2;
@@ -102,7 +106,9 @@
 																		$strPrecio, 
 																		$intStock, 
 																		$ruta,
-																		$intStatus);
+																		$intStatus,
+																		$dimensiones,
+																		$color);
 						}
 					}
 					if($request_producto > 0 )

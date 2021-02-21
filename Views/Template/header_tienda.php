@@ -83,6 +83,9 @@
 					
 					echo '<a href="'.base_url().'/login" class="flex-c-m trans-04 p-lr-25">
 							Iniciar sesión
+						</a>';
+					echo '<a href="'.base_url().'/tienda/registrar" class="flex-c-m trans-04 p-lr-25">
+							Registrarme
 						</a>';		
 					}
 
@@ -107,7 +110,7 @@
 						<ul class="main-menu">
 							<li class="<?php $url=base_url();
 							
-							if($url=$url."/home"){
+							if($url!=$url."/home"){
 								$estado=0;
 							}
 							if($estado==0&&$estado<1){echo "active-menu";}?>">
@@ -116,7 +119,7 @@
 
 
 							<li class="">
-								<a href="<?= base_url(); ?>/tienda">Tienda</a>
+								<a href="<?= base_url(); ?>/tienda" >Tienda</a>
 							</li>
 
 							<li>
@@ -124,11 +127,11 @@
 							</li>
 
 							<li>
-								<a href="<?= base_url(); ?>/nosotros">Nosotros</a>
+								<a href="<?= base_url(); ?>/tienda/nosotros">Nosotros</a>
 							</li>
 
 							<li>
-								<a href="<?= base_url(); ?>/contacto">Contacto</a>
+								<a href="<?= base_url(); ?>/tienda/contacto">Contacto</a>
 							</li>
 						</ul>
 					</div>	
