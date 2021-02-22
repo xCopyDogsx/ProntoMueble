@@ -135,7 +135,7 @@
 			$this->intIdUsuario = $intIdpersona;
 			$sql = "DELETE FROM persona WHERE Per_ID = $this->intIdUsuario ";
 			$arrData = array(0);
-			$request = $this->update($sql,$arrData);
+			$request = $this->delete($sql,$arrData);
 			return $request;
 		}
 
