@@ -91,9 +91,9 @@
 			$request = $this->select_all($sql);
 			if(empty($request))
 			{
-				$sql = "UPDATE prod_cat SET Cat_Status = ? WHERE Cat_ID = $this->intIdcategoria ";
+				$sql = "DELETE FROM prod_cat WHERE Cat_ID = $this->intIdcategoria ";
 				$arrData = array(0);
-				$request = $this->update($sql,$arrData);
+				$request = $this->delete($sql,$arrData);
 				if($request)
 				{
 					$request = 'ok';	

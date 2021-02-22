@@ -12,7 +12,7 @@
 			for ($i=0; $i < count($arrSlider) ; $i++) { 
 				$ruta = $arrSlider[$i]['Cat_Ruta'];
 			 ?>
-				<div class="item-slick1" style="background-image: url(<?= $arrSlider[$i]['Cat_Port'] ?>);">
+				<div class="item-slick1" style="background-image: url(<?= $arrSlider[$i]['Cat_Port'] ?>);max-width: 100%; ">
 					<div class="container h-full">
 						<div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
 							<div class="layer-slick1 animated visible-false" data-appear="fadeInDown" data-delay="0">
@@ -50,7 +50,7 @@
 				for ($j=0; $j < count($arrBanner); $j++) {
 					$ruta = $arrBanner[$j]['Cat_Ruta']; 
 				 ?>
-				<div class="col-md-6 col-xl-4 p-b-30 m-lr-auto">
+				<div class="col-sm-6 col-xl-4 p-b-30 m-lr-auto">
 					<!-- Block1 -->
 					<div class="block1 wrap-pic-w">
 						<img src="<?= $arrBanner[$j]['Cat_Port'] ?>" alt="<?= $arrBanner[$j]['Cat_Nom'] ?>">
