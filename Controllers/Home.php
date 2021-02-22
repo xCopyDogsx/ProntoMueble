@@ -15,7 +15,7 @@
 			$data['page_title'] = NOMBRE_EMPESA;
 			$data['page_name'] = "pronto_mueble";
 			$data['slider'] = $this->getCategoriasT(CAT_SLIDER);
-			$data['banner'] = $this->getCategoriasT(CAT_BANNER);
+			$data['banner'] = $this->getCategoriasTX(CAT_BANNER);
 			$data['productos'] = $this->getProductosT();
 			$this->views->getView($this,"home",$data); 
 		}

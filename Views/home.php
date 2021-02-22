@@ -49,6 +49,7 @@
 				<?php 
 				for ($j=0; $j < count($arrBanner); $j++) {
 					$ruta = $arrBanner[$j]['Cat_Ruta']; 
+				 	//dep($arrBanner);
 				 ?>
 				<div class="col-sm-6 col-xl-4 p-b-30 m-lr-auto">
 					<!-- Block1 -->

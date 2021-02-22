@@ -232,7 +232,7 @@
 						$_SESSION['idUser'] = $request_user;
 						$_SESSION['login'] = true;
 						$this->login->sessionLogin($request_user);
-						//sendEmail($dataUsuario,'email_bienvenida');
+						sendEmail($dataUsuario,'email_bienvenida');
 
 					}else if($request_user == 'exist'){
 						$arrResponse = array('status' => false, 'msg' => '¡Atención! el email ya existe, ingrese otro.');		
@@ -286,7 +286,7 @@
 													'email' => $_SESSION['userData']['Per_Email'], 
 													'emailCopia' => EMAIL_PEDIDOS,
 													'pedido' => $infoOrden );
-							//sendEmail($dataEmailOrden,"email_notificacion_orden");
+							sendEmail($dataEmailOrden,"email_notificacion_orden");
 
 							$orden = openssl_encrypt($request_pedido, METHODENCRIPT, KEY);
 							$transaccion = openssl_encrypt($idtransaccionpaypal, METHODENCRIPT, KEY);
@@ -334,7 +334,7 @@
 													'emailCopia' => EMAIL_PEDIDOS,
 													'pedido' => $infoOrden );
 
-									//sendEmail($dataEmailOrden,"email_notificacion_orden");
+									sendEmail($dataEmailOrden,"email_notificacion_orden");
 
 									$orden = openssl_encrypt($request_pedido, METHODENCRIPT, KEY);
 									$transaccion = openssl_encrypt($idtransaccionpaypal, METHODENCRIPT, KEY);
