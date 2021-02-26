@@ -231,7 +231,7 @@ function fntViewUsuario(idpersona){
                 document.querySelector("#celTipoUsuario").innerHTML = objData.data.Rol_Nom;
                 document.querySelector("#celEstado").innerHTML = estadoUsuario;
                 document.querySelector("#celFechaRegistro").innerHTML = objData.data.fechaRegistro; 
-                document.querySelector("#celFechaNacimiento").innerHTML = objData.data.fechaNacimiento; 
+                //document.querySelector("#celFechaNacimiento").innerHTML = objData.data.fechaNacimiento; 
                 $('#modalViewUser').modal('show');
             }else{
                 swal("Error", objData.msg , "error");

@@ -1,16 +1,16 @@
 <?php 
 	
 
-	const BASE_URL = "http://localhost/ProntoMueble";
+	const BASE_URL = "https://www.prontomueble.store";
 
 	//Zona horaria
 	date_default_timezone_set('America/Bogota');
 
 	//Datos de conexión a Base de Datos
 	const DB_HOST = "localhost";
-	const DB_NAME = "prontomueble";
-	const DB_USER = "root";
-	const DB_PASSWORD = "";
+	const DB_NAME = "u925028044_prontomueble";
+	const DB_USER = "u925028044_brian";
+	const DB_PASSWORD = "BdA2021PrSr";
 	const DB_CHARSET = "utf8";
 
 	//Deliminadores decimal y millar Ej. 24,1989.00

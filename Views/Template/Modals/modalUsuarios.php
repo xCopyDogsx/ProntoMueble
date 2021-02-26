@@ -114,10 +114,6 @@
               <td>Fecha registro:</td>
               <td id="celFechaRegistro">Larry</td>
             </tr>
-             <tr>
-              <td>Fecha de nacimiento:</td>
-              <td id="celFechaNacimiento">Larry</td>
-            </tr>
           </tbody>
         </table>
       </div>

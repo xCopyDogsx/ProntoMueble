@@ -185,23 +185,38 @@
 			<ul class="topbar-mobile">
 				<li>
 					<div class="left-top-bar">
-						Bienvenido
+						<?php if(!empty($_SESSION['login'])){
+					echo "Bienvenido: ".$_SESSION['userData']['Per_Nom'].' '.$_SESSION['userData']['Per_Ape'];
+						}else{
+							echo "Los mejores en decoración para tu hogar";
+						}
+						?>
 					</div>
 				</li>
 
 				<li>
 					<div class="right-top-bar flex-w h-full">
-						<a href="#" class="flex-c-m p-lr-10 trans-04">
-							Help & FAQs
-						</a>
-
-						<a href="#" class="flex-c-m p-lr-10 trans-04">
-							Mi cuenta
-						</a>
-
-						<a href="#" class="flex-c-m p-lr-10 trans-04">
+							<?php
+					if(!empty($_SESSION['login'])){
+						
+						echo '<a href="'.base_url().'/logout" class="flex-c-m trans-04 p-lr-25">
 							Salir
-						</a>
+						</a>';
+						echo '<a href="'.base_url().'/usuarios/perfil" class="flex-c-m trans-04 p-lr-25">
+							Mi cuenta
+						</a>';
+					}else{
+					
+					echo '<a href="'.base_url().'/login" class="flex-c-m trans-04 p-lr-25">
+							Iniciar sesión
+						</a>';
+					echo '<a href="'.base_url().'/tienda/registrar" class="flex-c-m trans-04 p-lr-25">
+							Registrarme
+						</a>';		
+					}
+
+
+						  ?>
 					</div>
 				</li>
 			</ul>
@@ -220,11 +235,11 @@
 				</li>
 
 				<li>
-					<a href="<?= base_url(); ?>/nosotros">Nosotros</a>
+					<a href="<?= base_url(); ?>/tienda/nosotros">Nosotros</a>
 				</li>
 
 				<li>
-					<a href="<?= base_url(); ?>/contacto">Contacto</a>
+					<a href="<?= base_url(); ?>/tienda/contacto">Contacto</a>
 				</li>
 			</ul>
 		</div>
